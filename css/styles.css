@@ -684,31 +684,82 @@ a {
   margin-top: 0.5rem;
 }
 
+/* --------------------------------------------------------------------------
+   9. SECCIÓN 2: "REVIVE LA MAGIA" (VIDEO RESUMEN EN FORMATO VERTICAL SMARTPHONE / REEL)
+   -------------------------------------------------------------------------- */
+.section-video-showcase {
+  padding: 5.5rem 1.5rem;
+  background: var(--bg-parchment-card);
+  border-top: 1px solid var(--border-hairline);
+  position: relative;
+  z-index: 20;
+}
+
+.video-showcase-container {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.video-showcase-header {
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+}
+
+.video-showcase-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.video-showcase-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.8rem, 3.2vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.video-showcase-desc {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* Marco Vertical Teléfono / Smartphone Reel */
 .cinema-video-frame {
   position: relative;
-  max-width: 360px;
-  width: 100%;
-  margin: 0 auto;
+  width: min(340px, 86vw) !important;
+  max-width: 340px !important;
+  margin: 0 auto !important;
   background: #0d0a07;
-  padding: 8px;
-  border-radius: 28px;
+  padding: 10px 8px;
+  border-radius: 32px;
   border: 2px solid var(--text-gold);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 0 6px rgba(18, 14, 10, 0.8), 0 0 30px rgba(191, 160, 96, 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 0 5px rgba(18, 14, 10, 0.85), 0 0 35px rgba(191, 160, 96, 0.25);
   transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .cinema-video-frame:hover {
   transform: translateY(-3px);
   border-color: var(--text-gold-light);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 6px rgba(18, 14, 10, 0.9), 0 0 40px rgba(191, 160, 96, 0.35);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 5px rgba(18, 14, 10, 0.95), 0 0 45px rgba(191, 160, 96, 0.4);
 }
 
 .video-media-wrapper {
   position: relative;
-  width: 100%;
-  aspect-ratio: 9 / 16;
-  max-height: 600px;
-  border-radius: 20px;
+  width: 100% !important;
+  aspect-ratio: 9 / 16 !important;
+  min-height: 480px;
+  max-height: 580px;
+  border-radius: 24px;
   overflow: hidden;
   background: #000;
 }
@@ -757,8 +808,8 @@ a {
 .video-play-btn {
   position: relative;
   z-index: 3;
-  width: 72px;
-  height: 72px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   background: rgba(24, 19, 14, 0.9);
   border: 2px solid var(--text-gold);
@@ -777,8 +828,8 @@ a {
 }
 
 .video-play-icon {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   margin-left: 4px;
   fill: currentColor;
 }
@@ -788,7 +839,7 @@ a {
   z-index: 3;
   margin-top: 1.15rem;
   font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -798,20 +849,23 @@ a {
 
 @media (max-width: 480px) {
   .cinema-video-frame {
-    max-width: min(320px, 86vw);
-    border-radius: 24px;
-    padding: 6px;
+    width: min(300px, 86vw) !important;
+    max-width: 300px !important;
+    border-radius: 28px;
+    padding: 8px 6px;
   }
   .video-media-wrapper {
-    border-radius: 18px;
+    min-height: 440px;
+    max-height: 520px;
+    border-radius: 20px;
   }
   .video-play-btn {
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
   }
   .video-play-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
 }
 
