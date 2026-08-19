@@ -1008,29 +1008,30 @@
   </div>
 
   <!-- ======================================================================
-       REPRODUCTOR AMBIENTAL DE MÚSICA NAVIDEÑA (BANDA SONORA CINEMATOGRÁFICA)
+       REPRODUCTOR DE MÚSICA NAVIDEÑA DE FONDO (YOUTUBE API)
        ====================================================================== -->
   <div id="yt-bg-audio-container" class="yt-hidden-audio-container" aria-hidden="true">
     <div id="yt-bg-audio"></div>
   </div>
 
-  <div class="music-ambient-player" id="music-ambient-player">
-    <button class="music-player-btn" id="music-toggle-btn" aria-label="Activar o pausar música navideña de fondo" title="Banda Sonora Navideña">
-      <div class="music-disc-icon" id="music-disc-icon">
-        <svg class="music-note-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-        </svg>
-      </div>
-      <div class="music-info-col">
-        <span class="music-track-title">BANDA SONORA NAVIDEÑA</span>
-        <span class="music-track-status" id="music-status-label">Música de fondo</span>
-      </div>
-      <div class="music-equalizer-bars" id="music-equalizer-bars" aria-hidden="true">
-        <span class="eq-bar eq-b1"></span>
-        <span class="eq-bar eq-b2"></span>
-        <span class="eq-bar eq-b3"></span>
-        <span class="eq-bar eq-b4"></span>
-      </div>
+  <!-- Botón Sutil de Bocina / Control de Audio en Esquina Inferior Izquierda -->
+  <div class="subtle-audio-control" id="subtle-audio-control">
+    <button class="btn-subtle-speaker is-playing" id="music-toggle-btn" aria-label="Apagar o activar música navideña de fondo" title="Música navideña de fondo (Tocar para apagar/encender)">
+      <!-- Icono Bocina Encendida con Ondas -->
+      <svg class="speaker-icon icon-sound-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path class="sound-wave wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        <path class="sound-wave wave-2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      </svg>
+
+      <!-- Icono Bocina Apagada / Muted -->
+      <svg class="speaker-icon icon-sound-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <line x1="23" y1="9" x2="17" y2="15"></line>
+        <line x1="17" y1="9" x2="23" y2="15"></line>
+      </svg>
+      
+      <span class="subtle-speaker-label">Música</span>
     </button>
   </div>
 

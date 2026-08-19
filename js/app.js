@@ -713,18 +713,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 10. REPRODUCTOR DE MÚSICA NAVIDEÑA DE FONDO (YOUTUBE API INTEGRATION)
+  // 10. REPRODUCTOR DE MÚSICA NAVIDEÑA DE FONDO (REPRODUCCIÓN AUTOMÁTICA Y BOCINA)
   // --------------------------------------------------------------------------
   function initBackgroundAudioPlayer() {
-    const playerContainer = document.getElementById('music-ambient-player');
     const toggleBtn = document.getElementById('music-toggle-btn');
-    const statusLabel = document.getElementById('music-status-label');
-
-    if (!playerContainer || !toggleBtn) return;
+    if (!toggleBtn) return;
 
     let ytPlayer = null;
     let isPlaying = false;
-    let userInitiated = false;
+    let isUserMuted = false;
 
     // Carga de la API IFrame de YouTube
     if (!window.YT) {
@@ -740,7 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
         width: '1',
         videoId: 'nPNNFa3jF3g',
         playerVars: {
-          autoplay: 0,
+          autoplay: 1,
           loop: 1,
           playlist: 'nPNNFa3jF3g',
           controls: 0,
@@ -753,32 +750,31 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         events: {
           onReady: (event) => {
-            event.target.setVolume(38); // Nivel de volumen ambiental cálido y relajante
-            if (userInitiated) {
-              playAudio();
-            }
+            event.target.setVolume(35); // Volumen ambiental equilibrado
+            tryPlay();
           },
           onStateChange: (event) => {
             if (event.data === YT.PlayerState.PLAYING) {
               isPlaying = true;
+              toggleBtn.classList.remove('is-muted');
               toggleBtn.classList.add('is-playing');
-              if (statusLabel) statusLabel.textContent = 'Reproduciendo';
             } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
               isPlaying = false;
+              toggleBtn.classList.add('is-muted');
               toggleBtn.classList.remove('is-playing');
-              if (statusLabel) statusLabel.textContent = 'Pausado · Tocar';
             }
           }
         }
       });
     };
 
-    function playAudio() {
+    function tryPlay() {
+      if (isUserMuted) return;
       if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
-        ytPlayer.playVideo();
+        const playPromise = ytPlayer.playVideo();
         isPlaying = true;
+        toggleBtn.classList.remove('is-muted');
         toggleBtn.classList.add('is-playing');
-        if (statusLabel) statusLabel.textContent = 'Reproduciendo';
       }
     }
 
@@ -786,32 +782,32 @@ document.addEventListener('DOMContentLoaded', () => {
       if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
         ytPlayer.pauseVideo();
         isPlaying = false;
+        toggleBtn.classList.add('is-muted');
         toggleBtn.classList.remove('is-playing');
-        if (statusLabel) statusLabel.textContent = 'Pausado · Tocar';
       }
     }
 
+    // Botón de encendido / apagado de música
     toggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      userInitiated = true;
       if (isPlaying) {
+        isUserMuted = true;
         pauseAudio();
       } else {
-        playAudio();
+        isUserMuted = false;
+        tryPlay();
       }
     });
 
-    // Iniciar con suavidad en la primera interacción (clic o toque) del usuario en la web
-    const startAudioOnFirstInteraction = () => {
-      if (!userInitiated) {
-        userInitiated = true;
-        playAudio();
+    // Desbloqueo inmediato con el primer gesto natural del visitante (scroll, toque, clic o movimiento)
+    const unlockOnGesture = () => {
+      if (!isUserMuted && !isPlaying) {
+        tryPlay();
       }
-      document.removeEventListener('click', startAudioOnFirstInteraction);
-      document.removeEventListener('touchstart', startAudioOnFirstInteraction);
     };
 
-    document.addEventListener('click', startAudioOnFirstInteraction, { once: true });
-    document.addEventListener('touchstart', startAudioOnFirstInteraction, { once: true, passive: true });
+    ['click', 'touchstart', 'scroll', 'pointerdown', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, unlockOnGesture, { once: true, passive: true });
+    });
   }
 });
