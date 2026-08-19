@@ -215,10 +215,7 @@
     </section>
 
     <!-- ======================================================================
-         4. SECCIÓN: SETS DE TEMPORADAS ANTERIORES (CARRUSEL MOTION FLUIDO)
-         ====================================================================== -->
-    <!-- ======================================================================
-         4. SECCIÓN: SETS DE TEMPORADAS ANTERIORES (CARRUSEL CILÍNDRICO 3D)
+         4. SECCIÓN: SETS DE TEMPORADAS ANTERIORES (3D PARALLAX UNFURLING GALLERY)
          ====================================================================== -->
     <section class="section-dark-gallery" id="galeria">
       <div class="gallery-container">
@@ -231,79 +228,271 @@
           </div>
         </div>
 
-        <!-- Escenario Cilíndrico 3D (Solo fotografías puras sin texto) -->
-        <div class="carousel-3d-stage" id="carousel-3d-stage">
-          <div class="carousel-3d-cylinder" id="carousel-3d-cylinder">
+        <!-- Ventana 3D Parallax Unfurling Matrix -->
+        <div class="parallax-unfurl-viewport reveal-on-scroll reveal-delay-1" id="parallax-unfurl-viewport">
+          <!-- Sombra Perimetral y Viñeta Cinemática -->
+          <div class="parallax-vignette-overlay"></div>
+
+          <!-- Matriz 3D Angulada -->
+          <div class="parallax-3d-matrix" id="parallax-3d-matrix">
             
-            <!-- Foto 1 -->
-            <div class="carousel-3d-card ornate-gallery-frame" data-card-idx="0" data-lightbox-idx="0" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
-              <span class="frame-corner fc-tl"></span>
-              <span class="frame-corner fc-tr"></span>
-              <span class="frame-corner fc-bl"></span>
-              <span class="frame-corner fc-br"></span>
-              <div class="frame-img-box">
-                <img src="assets/images/set_anterior_1.jpg" alt="Set de temporada anterior - Rubiel Photo Art" loading="lazy">
+            <!-- Columna 1 (Flujo Continuo Ascendente) -->
+            <div class="parallax-col parallax-col-up" id="p-col-1">
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="0" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_1.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="1" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_2.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="2" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_3.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="3" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_4.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <!-- Duplicados para ciclo infinito continuo -->
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="0" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_1.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="1" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_2.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
               </div>
             </div>
 
-            <!-- Foto 2 -->
-            <div class="carousel-3d-card ornate-gallery-frame" data-card-idx="1" data-lightbox-idx="1" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
-              <span class="frame-corner fc-tl"></span>
-              <span class="frame-corner fc-tr"></span>
-              <span class="frame-corner fc-bl"></span>
-              <span class="frame-corner fc-br"></span>
-              <div class="frame-img-box">
-                <img src="assets/images/set_anterior_2.jpg" alt="Set de temporada anterior - Rubiel Photo Art" loading="lazy">
+            <!-- Columna 2 (Flujo Continuo Descendente) -->
+            <div class="parallax-col parallax-col-down" id="p-col-2">
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="4" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_5.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="2" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_3.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="0" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_1.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="1" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_2.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <!-- Duplicados para ciclo infinito continuo -->
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="4" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_5.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="2" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_3.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
               </div>
             </div>
 
-            <!-- Foto 3 -->
-            <div class="carousel-3d-card ornate-gallery-frame" data-card-idx="2" data-lightbox-idx="2" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
-              <span class="frame-corner fc-tl"></span>
-              <span class="frame-corner fc-tr"></span>
-              <span class="frame-corner fc-bl"></span>
-              <span class="frame-corner fc-br"></span>
-              <div class="frame-img-box">
-                <img src="assets/images/set_anterior_3.jpg" alt="Set de temporada anterior - Rubiel Photo Art" loading="lazy">
+            <!-- Columna 3 (Flujo Continuo Ascendente) -->
+            <div class="parallax-col parallax-col-up" id="p-col-3">
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="3" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_4.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="4" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_5.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="1" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_2.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="0" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_1.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <!-- Duplicados para ciclo infinito continuo -->
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="3" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_4.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="4" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_5.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
               </div>
             </div>
 
-            <!-- Foto 4 -->
-            <div class="carousel-3d-card ornate-gallery-frame" data-card-idx="3" data-lightbox-idx="3" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
-              <span class="frame-corner fc-tl"></span>
-              <span class="frame-corner fc-tr"></span>
-              <span class="frame-corner fc-bl"></span>
-              <span class="frame-corner fc-br"></span>
-              <div class="frame-img-box">
-                <img src="assets/images/set_anterior_4.jpg" alt="Set de temporada anterior - Rubiel Photo Art" loading="lazy">
+            <!-- Columna 4 (Flujo Continuo Descendente para pantallas ultra amplias) -->
+            <div class="parallax-col parallax-col-down extra-col" id="p-col-4">
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="1" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_2.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
               </div>
-            </div>
 
-            <!-- Foto 5 -->
-            <div class="carousel-3d-card ornate-gallery-frame" data-card-idx="4" data-lightbox-idx="4" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
-              <span class="frame-corner fc-tl"></span>
-              <span class="frame-corner fc-tr"></span>
-              <span class="frame-corner fc-bl"></span>
-              <span class="frame-corner fc-br"></span>
-              <div class="frame-img-box">
-                <img src="assets/images/set_anterior_5.jpg" alt="Set de temporada anterior - Rubiel Photo Art" loading="lazy">
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="3" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_4.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="4" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_5.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="2" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_3.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <!-- Duplicados para ciclo infinito continuo -->
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="1" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_2.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
+              </div>
+
+              <div class="unfurl-card ornate-gallery-frame" data-lightbox-idx="3" role="button" tabindex="0" aria-label="Ver fotografía a pantalla completa">
+                <span class="frame-corner fc-tl"></span>
+                <span class="frame-corner fc-tr"></span>
+                <span class="frame-corner fc-bl"></span>
+                <span class="frame-corner fc-br"></span>
+                <div class="frame-img-box">
+                  <img src="assets/images/set_anterior_4.jpg" alt="Set anterior Rubiel Photo Art" loading="lazy">
+                </div>
               </div>
             </div>
 
           </div>
-        </div>
-
-        <!-- Controles interactivos del Carrusel 3D -->
-        <div class="gallery-carousel-controls">
-          <button class="gallery-arrow-btn" id="gal-prev-btn" aria-label="Girar a la izquierda">‹</button>
-          <div class="gallery-dots-indicator" id="gallery-dots">
-            <span class="gal-dot active" data-idx="0"></span>
-            <span class="gal-dot" data-idx="1"></span>
-            <span class="gal-dot" data-idx="2"></span>
-            <span class="gal-dot" data-idx="3"></span>
-            <span class="gal-dot" data-idx="4"></span>
-          </div>
-          <button class="gallery-arrow-btn" id="gal-next-btn" aria-label="Girar a la derecha">›</button>
         </div>
 
       </div>

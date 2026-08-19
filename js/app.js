@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. ANIMACIÓN SUAVE AL HACER SCROLL (SCROLL REVEAL OBSERVER)
   initScrollReveal();
 
-  // 5. VISOR LIGHTBOX CINEMATOGRÁFICO DE GALERÍA Y CARRUSEL CILÍNDRICO 3D
+  // 5. VISOR LIGHTBOX Y MATRIZ 3D PARALLAX UNFURLING GALLERY
   initGalleryLightbox();
-  init3DPhotoCarousel();
+  initParallaxUnfurlingGallery();
 
   // 6. REPRODUCTOR DE VIDEO RESUMEN INTERACTIVO
   const videoTrigger = document.getElementById('video-poster-trigger');
@@ -294,164 +294,58 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 8.1 MOTOR DE CARRUSEL CILÍNDRICO 3D INTERACTIVO (3D-CAROUSEL ENGINE)
+  // 8.1 MATRIZ 3D PARALLAX UNFURLING GALLERY
   // --------------------------------------------------------------------------
-  function init3DPhotoCarousel() {
-    const stage = document.getElementById('carousel-3d-stage');
-    const cylinder = document.getElementById('carousel-3d-cylinder');
-    const prevBtn = document.getElementById('gal-prev-btn');
-    const nextBtn = document.getElementById('gal-next-btn');
-    const dots = document.querySelectorAll('.gal-dot');
-    const cards = cylinder ? cylinder.querySelectorAll('.carousel-3d-card') : [];
+  function initParallaxUnfurlingGallery() {
+    const viewport = document.getElementById('parallax-unfurl-viewport');
+    const matrix = document.getElementById('parallax-3d-matrix');
 
-    if (!stage || !cylinder || cards.length === 0) return;
+    if (!viewport || !matrix) return;
 
-    const count = cards.length;
-    let rotation = 0;
-    let targetRotation = 0;
-    let isDragging = false;
-    let isHovered = false;
-    let startX = 0;
-    let startRotation = 0;
-    let velocity = 0;
-    let lastX = 0;
-    let lastTime = 0;
-    const autoSpinSpeed = 0.14; // Velocidad de giro cinematográfico continuo
+    let targetRotateX = 15;
+    let targetRotateY = -12;
+    let currentRotateX = 15;
+    let currentRotateY = -12;
+    let isMouseInside = false;
 
-    function getRadius() {
-      const cardWidth = window.innerWidth <= 640 ? 200 : 270;
-      return Math.round((cardWidth / 2) / Math.tan(Math.PI / count)) + 16;
-    }
+    // Inclinación 3D interactiva al mover el mouse
+    viewport.addEventListener('mousemove', (e) => {
+      isMouseInside = true;
+      const rect = viewport.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-    function positionCards() {
-      const radius = getRadius();
-      const angleStep = 360 / count;
+      targetRotateY = -12 + x * 14;
+      targetRotateX = 15 - y * 12;
+    });
 
-      cards.forEach((card, i) => {
-        const angle = i * angleStep;
-        card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
-      });
-    }
+    viewport.addEventListener('mouseleave', () => {
+      isMouseInside = false;
+      targetRotateX = 15;
+      targetRotateY = -12;
+    });
 
-    positionCards();
-    window.addEventListener('resize', positionCards);
-
-    function updateActiveDot() {
-      const step = 360 / count;
-      const normRot = ((-targetRotation % 360) + 360) % 360;
-      const activeIdx = Math.round(normRot / step) % count;
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === activeIdx);
-      });
-    }
-
-    function render3D() {
-      if (!isDragging) {
-        if (!isHovered) {
-          targetRotation -= autoSpinSpeed;
-        }
-        targetRotation += velocity;
-        velocity *= 0.92;
-        if (Math.abs(velocity) < 0.01) velocity = 0;
+    // Inclinación suave mediante scroll de página
+    window.addEventListener('scroll', () => {
+      if (isMouseInside) return;
+      const rect = viewport.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      if (rect.top < windowH && rect.bottom > 0) {
+        const progress = (windowH - rect.top) / (windowH + rect.height);
+        targetRotateX = 20 - progress * 10;
+        targetRotateY = -16 + progress * 8;
       }
-
-      rotation += (targetRotation - rotation) * 0.12;
-      cylinder.style.transform = `rotateY(${rotation}deg)`;
-
-      updateActiveDot();
-      requestAnimationFrame(render3D);
-    }
-
-    render3D();
-
-    // Arrastre con Ratón
-    stage.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.clientX;
-      lastX = e.clientX;
-      startRotation = targetRotation;
-      lastTime = performance.now();
-      velocity = 0;
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      const now = performance.now();
-      const deltaX = e.clientX - startX;
-      const dt = Math.max(1, now - lastTime);
-
-      velocity = ((e.clientX - lastX) / dt) * 3.5;
-      lastX = e.clientX;
-      lastTime = now;
-
-      targetRotation = startRotation + deltaX * 0.28;
-    });
-
-    window.addEventListener('mouseup', () => {
-      if (isDragging) {
-        isDragging = false;
-      }
-    });
-
-    // Eventos Táctiles en Móviles
-    stage.addEventListener('touchstart', (e) => {
-      isDragging = true;
-      startX = e.touches[0].clientX;
-      lastX = e.touches[0].clientX;
-      startRotation = targetRotation;
-      lastTime = performance.now();
-      velocity = 0;
     }, { passive: true });
 
-    window.addEventListener('touchmove', (e) => {
-      if (!isDragging || e.touches.length === 0) return;
-      const now = performance.now();
-      const currentX = e.touches[0].clientX;
-      const deltaX = currentX - startX;
-      const dt = Math.max(1, now - lastTime);
+    function renderParallaxTilt() {
+      currentRotateX += (targetRotateX - currentRotateX) * 0.08;
+      currentRotateY += (targetRotateY - currentRotateY) * 0.08;
 
-      velocity = ((currentX - lastX) / dt) * 3.5;
-      lastX = currentX;
-      lastTime = now;
-
-      targetRotation = startRotation + deltaX * 0.32;
-    }, { passive: true });
-
-    window.addEventListener('touchend', () => {
-      if (isDragging) {
-        isDragging = false;
-      }
-    });
-
-    // Pausa con Cursor
-    stage.addEventListener('mouseenter', () => { isHovered = true; });
-    stage.addEventListener('mouseleave', () => { isHovered = false; });
-
-    // Controles de Flechas
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        const step = 360 / count;
-        targetRotation = Math.round(targetRotation / step) * step + step;
-        velocity = 0;
-      });
+      matrix.style.transform = `rotateX(${currentRotateX.toFixed(2)}deg) rotateY(${currentRotateY.toFixed(2)}deg) rotateZ(3deg)`;
+      requestAnimationFrame(renderParallaxTilt);
     }
 
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        const step = 360 / count;
-        targetRotation = Math.round(targetRotation / step) * step - step;
-        velocity = 0;
-      });
-    }
-
-    // Clic en Dots de Navegación
-    dots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => {
-        const step = 360 / count;
-        targetRotation = -idx * step;
-        velocity = 0;
-      });
-    });
+    renderParallaxTilt();
   }
 
   // --------------------------------------------------------------------------

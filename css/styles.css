@@ -819,93 +819,153 @@ a {
   margin-bottom: 0.4rem;
 }
 
-.carousel-3d-stage {
-  width: 100%;
-  height: 440px;
-  perspective: 1000px;
-  perspective-origin: 50% 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
+.parallax-unfurl-viewport {
   position: relative;
+  width: 100%;
+  max-width: 1140px;
+  height: 520px;
+  margin: 0 auto;
+  border-radius: 6px;
+  border: 1px solid rgba(191, 160, 96, 0.3);
+  background: #080605;
+  overflow: hidden;
+  box-shadow: var(--shadow-luxury), 0 20px 50px rgba(0, 0, 0, 0.85);
+  perspective: 1000px;
   user-select: none;
   -webkit-user-select: none;
-  cursor: grab;
-  touch-action: pan-y;
-  margin-bottom: 2rem;
 }
 
-.carousel-3d-stage:active {
-  cursor: grabbing;
+.parallax-vignette-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 
+    inset 0 80px 100px -25px rgba(8, 6, 5, 0.95),
+    inset 0 -80px 100px -25px rgba(8, 6, 5, 0.95),
+    inset 80px 0 90px -25px rgba(8, 6, 5, 0.88),
+    inset -80px 0 90px -25px rgba(8, 6, 5, 0.88);
 }
 
-.carousel-3d-cylinder {
-  width: 270px;
-  height: 360px;
-  position: relative;
+.parallax-3d-matrix {
+  position: absolute;
+  top: -25%;
+  left: -12%;
+  width: 124%;
+  height: 150%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
   transform-style: preserve-3d;
+  transform: rotateX(15deg) rotateY(-12deg) rotateZ(3deg);
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
-.carousel-3d-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 270px;
-  height: 360px;
+.parallax-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 28%;
+  min-width: 180px;
+  max-width: 260px;
+  flex-shrink: 0;
+  will-change: transform;
+}
+
+.parallax-col-up {
+  animation: unfurlScrollUp 34s linear infinite;
+}
+
+.parallax-col-down {
+  animation: unfurlScrollDown 38s linear infinite;
+}
+
+@keyframes unfurlScrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes unfurlScrollDown {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+.parallax-unfurl-viewport:hover .parallax-col {
+  animation-play-state: paused;
+}
+
+.unfurl-card {
+  width: 100%;
+  aspect-ratio: 3/4;
   background: #0d0a07;
-  padding: 7px;
+  padding: 6px;
   border-radius: 4px;
-  border: 1.5px solid rgba(191, 160, 96, 0.4);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.75), 0 0 24px rgba(191, 160, 96, 0.12);
+  border: 1px solid rgba(191, 160, 96, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+  position: relative;
   transform-style: preserve-3d;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s ease;
 }
 
-.carousel-3d-card:hover {
+.unfurl-card:hover {
+  transform: scale(1.05) translateZ(32px);
   border-color: var(--text-gold);
-  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.85), 0 0 32px rgba(191, 160, 96, 0.3);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9), 0 0 25px rgba(191, 160, 96, 0.25);
+  z-index: 15;
 }
 
-.carousel-3d-card .frame-img-box {
+.unfurl-card .frame-img-box {
   width: 100%;
   height: 100%;
-  position: relative;
-  overflow: hidden;
   border-radius: 2px;
+  overflow: hidden;
+  background: #14100c;
 }
 
-.carousel-3d-card .frame-img-box img {
+.unfurl-card .frame-img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   pointer-events: none;
-  filter: brightness(0.96) contrast(1.05);
+  filter: brightness(0.92) contrast(1.05);
+  transition: filter 0.3s ease, transform 0.4s ease;
 }
 
-@media (max-width: 640px) {
-  .carousel-3d-stage {
-    height: 360px;
-    perspective: 750px;
-  }
-  .carousel-3d-cylinder,
-  .carousel-3d-card {
-    width: 220px;
-    height: 300px;
+.unfurl-card:hover .frame-img-box img {
+  filter: brightness(1) contrast(1.08);
+  transform: scale(1.03);
+}
+
+@media (max-width: 1100px) {
+  .parallax-col.extra-col {
+    display: none;
   }
 }
 
-.gallery-carousel-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  margin-bottom: 1.75rem;
+@media (max-width: 768px) {
+  .parallax-unfurl-viewport {
+    height: 420px;
+    max-width: 100%;
+  }
+
+  .parallax-3d-matrix {
+    top: -25%;
+    left: -20%;
+    width: 140%;
+    height: 150%;
+    gap: 1rem;
+    transform: rotateX(12deg) rotateY(-8deg) rotateZ(2deg);
+  }
+
+  .parallax-col {
+    gap: 1rem;
+    width: 44%;
+    min-width: 140px;
+  }
 }
 
 .gallery-arrow-btn {
