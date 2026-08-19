@@ -1228,6 +1228,7 @@ a {
   border-top: 1px solid var(--border-hairline);
   position: relative;
   z-index: 20;
+  overflow: hidden;
 }
 
 .about-artist-container {
@@ -1257,12 +1258,15 @@ a {
 
 .about-artist-title {
   font-family: var(--font-title);
-  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--text-main);
   margin: 0.2rem 0 0.5rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.15;
 }
 
 .about-artist-slogan-lead {
@@ -1288,6 +1292,7 @@ a {
   gap: 1.25rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border-hairline);
+  width: 100%;
 }
 
 .about-stat-item {
@@ -1297,23 +1302,28 @@ a {
 
 .about-stat-number {
   font-family: var(--font-title);
-  font-size: 1.85rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
   font-weight: 800;
   color: var(--color-espresso);
-  line-height: 1;
+  line-height: 1.1;
   margin-bottom: 0.3rem;
+  overflow-wrap: break-word;
 }
 
 .about-stat-label {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
+  line-height: 1.3;
 }
 
 .about-artist-visual-col {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .artist-portrait-circle-box {
@@ -1321,17 +1331,19 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .artist-portrait-circle {
-  width: 290px;
-  height: 290px;
+  width: min(280px, 68vw);
+  height: min(280px, 68vw);
   border-radius: 50%;
   border: 3px solid var(--text-gold);
   overflow: hidden;
-  box-shadow: var(--shadow-luxury), 0 0 0 10px rgba(191, 160, 96, 0.12);
+  box-shadow: var(--shadow-luxury), 0 0 0 8px rgba(191, 160, 96, 0.15);
   background: var(--bg-charcoal);
   position: relative;
+  margin: 0 auto;
 }
 
 .artist-portrait-circle img {
@@ -1344,7 +1356,9 @@ a {
 
 .artist-signature-badge {
   position: absolute;
-  bottom: -6px;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--color-espresso);
   color: #fff;
   border: 1px solid var(--text-gold);
@@ -1356,22 +1370,79 @@ a {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
 }
 
 @media (max-width: 900px) {
+  .section-about-artist {
+    padding: 4.5rem 1.25rem;
+  }
+
   .about-artist-container {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.25rem;
     text-align: center;
+  }
+
+  .about-artist-visual-col {
+    order: -1;
+    margin-bottom: 0.5rem;
   }
 
   .about-artist-text-col {
     align-items: center;
+    text-align: center;
+  }
+
+  .about-artist-text-col .divider-x {
+    margin: 0 auto 1.25rem !important;
+  }
+
+  .about-artist-title {
+    font-size: clamp(1.6rem, 6.4vw, 2.25rem);
+    letter-spacing: 0.03em;
+  }
+
+  .about-artist-slogan-lead {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-artist-bio-p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    max-width: 520px;
+    margin: 0 auto 1.5rem;
   }
 
   .about-artist-stats-row {
     width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    gap: 0.75rem;
     justify-content: center;
+  }
+
+  .about-stat-item {
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-stat-number {
+    font-size: 1.45rem;
+  }
+
+  .about-stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+@media (max-width: 440px) {
+  .about-artist-stats-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding-top: 1.25rem;
   }
 }
 
@@ -2178,15 +2249,73 @@ a {
     gap: 2.5rem;
   }
 
+  .booking-info-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .booking-info-col .divider-x {
+    margin: 0 auto 1.25rem !important;
+  }
+
+  .booking-guarantee-badge {
+    margin: 0 auto 1.5rem;
+  }
+
+  .booking-perks-list {
+    align-items: flex-start;
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
   .footer-top-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .footer-col-brand,
+  .footer-col-social,
+  .footer-col-contact {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-brand-title {
+    font-size: clamp(1rem, 4.8vw, 1.25rem);
+    letter-spacing: 0.16em;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .footer-brand-bio {
+    margin: 0 auto;
+    font-size: 0.85rem;
+    max-width: 320px;
+  }
+
+  .footer-social-icons {
+    justify-content: center;
+  }
+
+  .footer-contact-list {
+    align-items: center;
   }
 
   .footer-bottom-bar {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+    padding-top: 1.5rem;
+  }
+
+  .footer-legal-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 }
 
@@ -2194,11 +2323,6 @@ a {
   .features-triplet-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
-  }
-
-  .gallery-frames-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
   }
 
   .testimonials-grid {

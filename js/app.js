@@ -319,8 +319,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const autoSpinSpeed = 0.14; // Velocidad de giro cinematográfico continuo
 
     function getRadius() {
-      const cardWidth = window.innerWidth <= 640 ? 220 : 270;
-      return Math.round((cardWidth / 2) / Math.tan(Math.PI / count)) + 20;
+      const cardWidth = window.innerWidth <= 640 ? 200 : 270;
+      return Math.round((cardWidth / 2) / Math.tan(Math.PI / count)) + 16;
     }
 
     function positionCards() {
