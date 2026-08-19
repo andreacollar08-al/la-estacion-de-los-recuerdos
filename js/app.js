@@ -23,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. ANIMACIÓN SUAVE AL HACER SCROLL (SCROLL REVEAL OBSERVER)
   initScrollReveal();
 
-  // 5. VISOR LIGHTBOX CINEMATOGRÁFICO DE GALERÍA
+  // 5. VISOR LIGHTBOX CINEMATOGRÁFICO DE GALERÍA Y CARRUSEL MOTION
   initGalleryLightbox();
+  initGalleryCarousel();
 
   // 6. REPRODUCTOR DE VIDEO RESUMEN INTERACTIVO
   const videoTrigger = document.getElementById('video-poster-trigger');
@@ -280,6 +281,121 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowLeft') showImage(currentIdx - 1);
       if (e.key === 'ArrowRight') showImage(currentIdx + 1);
     });
+  }
+
+  // --------------------------------------------------------------------------
+  // 8.1 CARRUSEL INTERACTIVO CON MOTION AUTOMÁTICO DE GALERÍA
+  // --------------------------------------------------------------------------
+  function initGalleryCarousel() {
+    const track = document.getElementById('gallery-track-motion');
+    const viewport = document.getElementById('gallery-carousel-viewport');
+    const prevBtn = document.getElementById('gal-prev-btn');
+    const nextBtn = document.getElementById('gal-next-btn');
+    const dots = document.querySelectorAll('.gal-dot');
+    const frames = track ? track.querySelectorAll('.ornate-gallery-frame') : [];
+
+    if (!track || frames.length === 0) return;
+
+    let currentIndex = 0;
+    let autoPlayTimer = null;
+    let isHovered = false;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function getMaxIndex() {
+      if (window.innerWidth <= 600) return frames.length - 1;
+      if (window.innerWidth <= 900) return Math.max(0, frames.length - 2);
+      return 0; // En desktop amplio se muestran los 3 en fila armónica
+    }
+
+    function updateCarousel() {
+      const maxIdx = getMaxIndex();
+      if (currentIndex > maxIdx) currentIndex = 0;
+      if (currentIndex < 0) currentIndex = maxIdx;
+
+      if (maxIdx === 0) {
+        track.style.transform = 'none';
+      } else {
+        const frameWidth = frames[0].getBoundingClientRect().width;
+        const gap = 28;
+        const offset = currentIndex * (frameWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
+      }
+
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
+      });
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayTimer = setInterval(() => {
+        if (!isHovered && getMaxIndex() > 0) {
+          currentIndex = (currentIndex + 1 > getMaxIndex()) ? 0 : currentIndex + 1;
+          updateCarousel();
+        }
+      }, 3800);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) clearInterval(autoPlayTimer);
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 < 0) ? getMaxIndex() : currentIndex - 1;
+        updateCarousel();
+        startAutoPlay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1 > getMaxIndex()) ? 0 : currentIndex + 1;
+        updateCarousel();
+        startAutoPlay();
+      });
+    }
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        currentIndex = idx;
+        updateCarousel();
+        startAutoPlay();
+      });
+    });
+
+    if (viewport) {
+      viewport.addEventListener('mouseenter', () => {
+        isHovered = true;
+      });
+      viewport.addEventListener('mouseleave', () => {
+        isHovered = false;
+      });
+
+      viewport.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        isHovered = true;
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        isHovered = false;
+        if (touchStartX - touchEndX > 40) {
+          currentIndex = (currentIndex + 1 > getMaxIndex()) ? 0 : currentIndex + 1;
+          updateCarousel();
+        } else if (touchEndX - touchStartX > 40) {
+          currentIndex = (currentIndex - 1 < 0) ? getMaxIndex() : currentIndex - 1;
+          updateCarousel();
+        }
+        startAutoPlay();
+      }, { passive: true });
+    }
+
+    window.addEventListener('resize', updateCarousel);
+
+    updateCarousel();
+    startAutoPlay();
   }
 
   // --------------------------------------------------------------------------
@@ -551,21 +667,22 @@ document.addEventListener('DOMContentLoaded', () => {
       height = canvas.height = window.innerHeight;
     });
 
-    const flakeCount = Math.min(width > 768 ? 150 : 75, 180);
+    // Cantidad sutil y delicada de copos de nieve (sin saturar la pantalla)
+    const flakeCount = width > 768 ? 26 : 14;
     const flakes = [];
 
     for (let i = 0; i < flakeCount; i++) {
       flakes.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 5.5 + 2.0,
-        speedY: Math.random() * 1.4 + 0.6,
-        speedX: Math.random() * 0.6 - 0.3,
-        opacity: Math.random() * 0.65 + 0.35,
+        radius: Math.random() * 3.6 + 1.4,
+        speedY: Math.random() * 0.75 + 0.35,
+        speedX: Math.random() * 0.4 - 0.2,
+        opacity: Math.random() * 0.35 + 0.15,
         rotation: Math.random() * Math.PI * 2,
-        rotationSpeed: (Math.random() * 0.03 - 0.015),
+        rotationSpeed: (Math.random() * 0.02 - 0.01),
         swing: Math.random() * Math.PI * 2,
-        swingSpeed: Math.random() * 0.02 + 0.01
+        swingSpeed: Math.random() * 0.015 + 0.008
       });
     }
 
