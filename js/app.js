@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. ANIMACIÓN SUAVE AL HACER SCROLL (SCROLL REVEAL OBSERVER)
   initScrollReveal();
 
-  // 5. VISOR LIGHTBOX CINEMATOGRÁFICO DE GALERÍA Y CARRUSEL MOTION
+  // 5. VISOR LIGHTBOX CINEMATOGRÁFICO DE GALERÍA Y CARRUSEL CILÍNDRICO 3D
   initGalleryLightbox();
-  initGalleryCarousel();
+  init3DPhotoCarousel();
 
   // 6. REPRODUCTOR DE VIDEO RESUMEN INTERACTIVO
   const videoTrigger = document.getElementById('video-poster-trigger');
@@ -224,6 +224,21 @@ document.addEventListener('DOMContentLoaded', () => {
         src: 'assets/images/set_candy_xmas_2025_editorial.jpg',
         title: 'CANDY XMAS 2025 · EDITORIAL & GALA',
         desc: 'Retrato de elegancia navideña con vestidos de noche, esferas doradas y ambientación glamourosa para jóvenes y familias.'
+      },
+      {
+        src: 'assets/images/family_nostalgia.jpg',
+        title: 'HISTORIAS ENMARCADAS · RETRATO FAMILIAR',
+        desc: 'Capturando la calidez, la unión y la complicidad genuina entre padres e hijos con iluminación cinematográfica cálida.'
+      },
+      {
+        src: 'assets/images/family_train_door.jpg',
+        title: 'EL VAGÓN DE LA NAVIDAD · ESTACIÓN VINTAGE',
+        desc: 'Una experiencia temática inolvidable abordando la magia navideña en escenarios construidos a escala real.'
+      },
+      {
+        src: 'assets/images/poster_rubiel_art.jpg',
+        title: 'RUBIEL PHOTO ART · PRODUCCIÓN & ARTE',
+        desc: 'Más de 10 años creando experiencias visuales únicas y mágicas en Palenque, Chiapas y Latinoamérica.'
       }
     ];
 
@@ -284,118 +299,164 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 8.1 CARRUSEL INTERACTIVO CON MOTION AUTOMÁTICO DE GALERÍA
+  // 8.1 MOTOR DE CARRUSEL CILÍNDRICO 3D INTERACTIVO (3D-CAROUSEL ENGINE)
   // --------------------------------------------------------------------------
-  function initGalleryCarousel() {
-    const track = document.getElementById('gallery-track-motion');
-    const viewport = document.getElementById('gallery-carousel-viewport');
+  function init3DPhotoCarousel() {
+    const stage = document.getElementById('carousel-3d-stage');
+    const cylinder = document.getElementById('carousel-3d-cylinder');
     const prevBtn = document.getElementById('gal-prev-btn');
     const nextBtn = document.getElementById('gal-next-btn');
     const dots = document.querySelectorAll('.gal-dot');
-    const frames = track ? track.querySelectorAll('.ornate-gallery-frame') : [];
+    const cards = cylinder ? cylinder.querySelectorAll('.carousel-3d-card') : [];
 
-    if (!track || frames.length === 0) return;
+    if (!stage || !cylinder || cards.length === 0) return;
 
-    let currentIndex = 0;
-    let autoPlayTimer = null;
+    const count = cards.length;
+    let rotation = 0;
+    let targetRotation = 0;
+    let isDragging = false;
     let isHovered = false;
-    let touchStartX = 0;
-    let touchEndX = 0;
+    let startX = 0;
+    let startRotation = 0;
+    let velocity = 0;
+    let lastX = 0;
+    let lastTime = 0;
+    const autoSpinSpeed = 0.14; // Velocidad de giro cinematográfico continuo
 
-    function getMaxIndex() {
-      if (window.innerWidth <= 600) return frames.length - 1;
-      if (window.innerWidth <= 900) return Math.max(0, frames.length - 2);
-      return 0; // En desktop amplio se muestran los 3 en fila armónica
+    function getRadius() {
+      const cardWidth = window.innerWidth <= 640 ? 220 : 270;
+      return Math.round((cardWidth / 2) / Math.tan(Math.PI / count)) + 20;
     }
 
-    function updateCarousel() {
-      const maxIdx = getMaxIndex();
-      if (currentIndex > maxIdx) currentIndex = 0;
-      if (currentIndex < 0) currentIndex = maxIdx;
+    function positionCards() {
+      const radius = getRadius();
+      const angleStep = 360 / count;
 
-      if (maxIdx === 0) {
-        track.style.transform = 'none';
-      } else {
-        const frameWidth = frames[0].getBoundingClientRect().width;
-        const gap = 28;
-        const offset = currentIndex * (frameWidth + gap);
-        track.style.transform = `translateX(-${offset}px)`;
-      }
-
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === currentIndex);
+      cards.forEach((card, i) => {
+        const angle = i * angleStep;
+        card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
       });
     }
 
-    function startAutoPlay() {
-      stopAutoPlay();
-      autoPlayTimer = setInterval(() => {
-        if (!isHovered && getMaxIndex() > 0) {
-          currentIndex = (currentIndex + 1 > getMaxIndex()) ? 0 : currentIndex + 1;
-          updateCarousel();
+    positionCards();
+    window.addEventListener('resize', positionCards);
+
+    function updateActiveDot() {
+      const step = 360 / count;
+      const normRot = ((-targetRotation % 360) + 360) % 360;
+      const activeIdx = Math.round(normRot / step) % count;
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === activeIdx);
+      });
+    }
+
+    function render3D() {
+      if (!isDragging) {
+        if (!isHovered) {
+          targetRotation -= autoSpinSpeed;
         }
-      }, 3800);
+        targetRotation += velocity;
+        velocity *= 0.92;
+        if (Math.abs(velocity) < 0.01) velocity = 0;
+      }
+
+      rotation += (targetRotation - rotation) * 0.12;
+      cylinder.style.transform = `rotateY(${rotation}deg)`;
+
+      updateActiveDot();
+      requestAnimationFrame(render3D);
     }
 
-    function stopAutoPlay() {
-      if (autoPlayTimer) clearInterval(autoPlayTimer);
-    }
+    render3D();
 
+    // Arrastre con Ratón
+    stage.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+      lastX = e.clientX;
+      startRotation = targetRotation;
+      lastTime = performance.now();
+      velocity = 0;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const now = performance.now();
+      const deltaX = e.clientX - startX;
+      const dt = Math.max(1, now - lastTime);
+
+      velocity = ((e.clientX - lastX) / dt) * 3.5;
+      lastX = e.clientX;
+      lastTime = now;
+
+      targetRotation = startRotation + deltaX * 0.28;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+      }
+    });
+
+    // Eventos Táctiles en Móviles
+    stage.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      startX = e.touches[0].clientX;
+      lastX = e.touches[0].clientX;
+      startRotation = targetRotation;
+      lastTime = performance.now();
+      velocity = 0;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging || e.touches.length === 0) return;
+      const now = performance.now();
+      const currentX = e.touches[0].clientX;
+      const deltaX = currentX - startX;
+      const dt = Math.max(1, now - lastTime);
+
+      velocity = ((currentX - lastX) / dt) * 3.5;
+      lastX = currentX;
+      lastTime = now;
+
+      targetRotation = startRotation + deltaX * 0.32;
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+      if (isDragging) {
+        isDragging = false;
+      }
+    });
+
+    // Pausa con Cursor
+    stage.addEventListener('mouseenter', () => { isHovered = true; });
+    stage.addEventListener('mouseleave', () => { isHovered = false; });
+
+    // Controles de Flechas
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 < 0) ? getMaxIndex() : currentIndex - 1;
-        updateCarousel();
-        startAutoPlay();
+        const step = 360 / count;
+        targetRotation = Math.round(targetRotation / step) * step + step;
+        velocity = 0;
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1 > getMaxIndex()) ? 0 : currentIndex + 1;
-        updateCarousel();
-        startAutoPlay();
+        const step = 360 / count;
+        targetRotation = Math.round(targetRotation / step) * step - step;
+        velocity = 0;
       });
     }
 
+    // Clic en Dots de Navegación
     dots.forEach((dot, idx) => {
       dot.addEventListener('click', () => {
-        currentIndex = idx;
-        updateCarousel();
-        startAutoPlay();
+        const step = 360 / count;
+        targetRotation = -idx * step;
+        velocity = 0;
       });
     });
-
-    if (viewport) {
-      viewport.addEventListener('mouseenter', () => {
-        isHovered = true;
-      });
-      viewport.addEventListener('mouseleave', () => {
-        isHovered = false;
-      });
-
-      viewport.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        isHovered = true;
-      }, { passive: true });
-
-      viewport.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        isHovered = false;
-        if (touchStartX - touchEndX > 40) {
-          currentIndex = (currentIndex + 1 > getMaxIndex()) ? 0 : currentIndex + 1;
-          updateCarousel();
-        } else if (touchEndX - touchStartX > 40) {
-          currentIndex = (currentIndex - 1 < 0) ? getMaxIndex() : currentIndex - 1;
-          updateCarousel();
-        }
-        startAutoPlay();
-      }, { passive: true });
-    }
-
-    window.addEventListener('resize', updateCarousel);
-
-    updateCarousel();
-    startAutoPlay();
   }
 
   // --------------------------------------------------------------------------

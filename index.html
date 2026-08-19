@@ -220,64 +220,123 @@
     <section class="section-dark-gallery" id="galeria">
       <div class="gallery-container">
         
-        <div class="gallery-carousel-viewport" id="gallery-carousel-viewport">
-          <div class="gallery-track-motion" id="gallery-track-motion">
-            <!-- Cuadro 1: Xmas 2024 -->
-            <div class="ornate-gallery-frame reveal-on-scroll reveal-delay-1" role="button" tabindex="0" data-lightbox-idx="0" aria-label="Ver escena Xmas 2024 a pantalla completa">
+        <!-- Indicador de Interacción 3D -->
+        <div class="carousel-3d-hint">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 16l-4-4m0 0l4-4m-4 4h18m-4 4l4-4m0 0l-4-4"/>
+          </svg>
+          <span>ARRASTRA PARA GIRAR EN 3D · HAZ CLIC PARA AMPLIAR</span>
+        </div>
+
+        <!-- Escenario Cilíndrico 3D -->
+        <div class="carousel-3d-stage" id="carousel-3d-stage">
+          <div class="carousel-3d-cylinder" id="carousel-3d-cylinder">
+            
+            <!-- Panel 1: Xmas 2024 -->
+            <div class="carousel-3d-card ornate-gallery-frame" data-card-idx="0" data-lightbox-idx="0" role="button" tabindex="0" aria-label="Ver Xmas 2024 a pantalla completa">
               <span class="frame-corner fc-tl"></span>
               <span class="frame-corner fc-tr"></span>
               <span class="frame-corner fc-bl"></span>
               <span class="frame-corner fc-br"></span>
               <div class="frame-img-box">
                 <span class="frame-season-badge">XMAS 2024</span>
-                <img src="assets/images/set_xmas_2024.jpg" alt="Sesión navideña set Xmas 2024 con nieve y farol - Rubiel Photo Art" loading="lazy">
+                <img src="assets/images/set_xmas_2024.jpg" alt="Set Xmas 2024 con nieve y farol - Rubiel Photo Art" loading="lazy">
                 <div class="gallery-zoom-overlay">
                   <span class="zoom-badge-text">VER EN DETALLE</span>
                 </div>
               </div>
             </div>
 
-            <!-- Cuadro 2: Candy Xmas 2025 (Familias y Niños) -->
-            <div class="ornate-gallery-frame reveal-on-scroll reveal-delay-2" role="button" tabindex="0" data-lightbox-idx="1" aria-label="Ver escena Candy Xmas 2025 Niños a pantalla completa">
+            <!-- Panel 2: Candy Xmas 2025 (Niños) -->
+            <div class="carousel-3d-card ornate-gallery-frame" data-card-idx="1" data-lightbox-idx="1" role="button" tabindex="0" aria-label="Ver Candy Xmas 2025 Niños a pantalla completa">
               <span class="frame-corner fc-tl"></span>
               <span class="frame-corner fc-tr"></span>
               <span class="frame-corner fc-bl"></span>
               <span class="frame-corner fc-br"></span>
               <div class="frame-img-box">
                 <span class="frame-season-badge">CANDY XMAS 2025</span>
-                <img src="assets/images/set_candy_xmas_2025_kids.jpg" alt="Sesión navideña Candy Xmas 2025 con bastones de caramelo y pijamas - Rubiel Photo Art" loading="lazy">
+                <img src="assets/images/set_candy_xmas_2025_kids.jpg" alt="Candy Xmas 2025 Familias y Niños - Rubiel Photo Art" loading="lazy">
                 <div class="gallery-zoom-overlay">
                   <span class="zoom-badge-text">VER EN DETALLE</span>
                 </div>
               </div>
             </div>
 
-            <!-- Cuadro 3: Candy Xmas 2025 (Editorial) -->
-            <div class="ornate-gallery-frame reveal-on-scroll reveal-delay-3" role="button" tabindex="0" data-lightbox-idx="2" aria-label="Ver escena Candy Xmas 2025 Editorial a pantalla completa">
+            <!-- Panel 3: Candy Xmas 2025 (Editorial) -->
+            <div class="carousel-3d-card ornate-gallery-frame" data-card-idx="2" data-lightbox-idx="2" role="button" tabindex="0" aria-label="Ver Candy Xmas 2025 Editorial a pantalla completa">
               <span class="frame-corner fc-tl"></span>
               <span class="frame-corner fc-tr"></span>
               <span class="frame-corner fc-bl"></span>
               <span class="frame-corner fc-br"></span>
               <div class="frame-img-box">
                 <span class="frame-season-badge">CANDY XMAS 2025</span>
-                <img src="assets/images/set_candy_xmas_2025_editorial.jpg" alt="Sesión navideña Candy Xmas 2025 vestidos de gala - Rubiel Photo Art" loading="lazy">
+                <img src="assets/images/set_candy_xmas_2025_editorial.jpg" alt="Candy Xmas 2025 Vestidos de Gala - Rubiel Photo Art" loading="lazy">
                 <div class="gallery-zoom-overlay">
                   <span class="zoom-badge-text">VER EN DETALLE</span>
                 </div>
               </div>
             </div>
+
+            <!-- Panel 4: Nostalgia Familiar -->
+            <div class="carousel-3d-card ornate-gallery-frame" data-card-idx="3" data-lightbox-idx="3" role="button" tabindex="0" aria-label="Ver Retrato Familiar Nostalgia a pantalla completa">
+              <span class="frame-corner fc-tl"></span>
+              <span class="frame-corner fc-tr"></span>
+              <span class="frame-corner fc-bl"></span>
+              <span class="frame-corner fc-br"></span>
+              <div class="frame-img-box">
+                <span class="frame-season-badge">NOSTALGIA</span>
+                <img src="assets/images/family_nostalgia.jpg" alt="Retrato Navideño Familiar - Rubiel Photo Art" loading="lazy">
+                <div class="gallery-zoom-overlay">
+                  <span class="zoom-badge-text">VER EN DETALLE</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 5: El Vagón Mágico -->
+            <div class="carousel-3d-card ornate-gallery-frame" data-card-idx="4" data-lightbox-idx="4" role="button" tabindex="0" aria-label="Ver Vagón de la Navidad a pantalla completa">
+              <span class="frame-corner fc-tl"></span>
+              <span class="frame-corner fc-tr"></span>
+              <span class="frame-corner fc-bl"></span>
+              <span class="frame-corner fc-br"></span>
+              <div class="frame-img-box">
+                <span class="frame-season-badge">EL GRAN VIAJE</span>
+                <img src="assets/images/family_train_door.jpg" alt="Estación y Vagón de la Navidad - Rubiel Photo Art" loading="lazy">
+                <div class="gallery-zoom-overlay">
+                  <span class="zoom-badge-text">VER EN DETALLE</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 6: Arte & Producción -->
+            <div class="carousel-3d-card ornate-gallery-frame" data-card-idx="5" data-lightbox-idx="5" role="button" tabindex="0" aria-label="Ver Estudio y Set a pantalla completa">
+              <span class="frame-corner fc-tl"></span>
+              <span class="frame-corner fc-tr"></span>
+              <span class="frame-corner fc-bl"></span>
+              <span class="frame-corner fc-br"></span>
+              <div class="frame-img-box">
+                <span class="frame-season-badge">EDICIÓN ESPECIAL</span>
+                <img src="assets/images/poster_rubiel_art.jpg" alt="Set y Producción Artística - Rubiel Photo Art" loading="lazy">
+                <div class="gallery-zoom-overlay">
+                  <span class="zoom-badge-text">VER EN DETALLE</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <!-- Controles interactivos del Carrusel -->
+        <!-- Controles interactivos del Carrusel 3D -->
         <div class="gallery-carousel-controls">
-          <button class="gallery-arrow-btn" id="gal-prev-btn" aria-label="Set anterior">‹</button>
+          <button class="gallery-arrow-btn" id="gal-prev-btn" aria-label="Girar a la izquierda">‹</button>
           <div class="gallery-dots-indicator" id="gallery-dots">
             <span class="gal-dot active" data-idx="0"></span>
             <span class="gal-dot" data-idx="1"></span>
             <span class="gal-dot" data-idx="2"></span>
+            <span class="gal-dot" data-idx="3"></span>
+            <span class="gal-dot" data-idx="4"></span>
+            <span class="gal-dot" data-idx="5"></span>
           </div>
-          <button class="gallery-arrow-btn" id="gal-next-btn" aria-label="Set siguiente">›</button>
+          <button class="gallery-arrow-btn" id="gal-next-btn" aria-label="Girar a la derecha">›</button>
         </div>
 
         <div class="gallery-bottom-caption reveal-on-scroll">
