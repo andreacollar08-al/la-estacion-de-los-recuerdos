@@ -1008,11 +1008,12 @@
   </div>
 
   <!-- ======================================================================
-       REPRODUCTOR DE MÚSICA NAVIDEÑA DE FONDO (YOUTUBE API)
+       REPRODUCTOR NATIVO DE AUDIO HTML5 (BANDA SONORA NAVIDEÑA)
        ====================================================================== -->
-  <div id="yt-bg-audio-container" class="yt-hidden-audio-container" aria-hidden="true">
-    <div id="yt-bg-audio"></div>
-  </div>
+  <audio id="bg-audio-player" loop preload="auto" playsinline>
+    <source src="assets/audio/navidad_soundtrack.m4a" type="audio/mp4">
+    <source src="assets/audio/navidad_soundtrack.mp4" type="audio/mp4">
+  </audio>
 
   <!-- Botón Sutil de Bocina / Control de Audio en Esquina Inferior Izquierda -->
   <div class="subtle-audio-control" id="subtle-audio-control">

@@ -713,101 +713,63 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 10. REPRODUCTOR DE MÚSICA NAVIDEÑA DE FONDO (REPRODUCCIÓN AUTOMÁTICA Y BOCINA)
+  // 10. REPRODUCTOR NATIVO DE MÚSICA NAVIDEÑA (HTML5 AUDIO ENGINE)
   // --------------------------------------------------------------------------
   function initBackgroundAudioPlayer() {
+    const audio = document.getElementById('bg-audio-player');
     const toggleBtn = document.getElementById('music-toggle-btn');
-    if (!toggleBtn) return;
+    if (!audio || !toggleBtn) return;
 
-    let ytPlayer = null;
-    let isPlaying = false;
+    audio.volume = 0.35; // Volumen ambiental equilibrado
     let isUserMuted = false;
 
-    // Carga de la API IFrame de YouTube
-    if (!window.YT) {
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    }
-
-    window.onYouTubeIframeAPIReady = function() {
-      ytPlayer = new YT.Player('yt-bg-audio', {
-        height: '1',
-        width: '1',
-        videoId: 'nPNNFa3jF3g',
-        playerVars: {
-          autoplay: 1,
-          loop: 1,
-          playlist: 'nPNNFa3jF3g',
-          controls: 0,
-          showinfo: 0,
-          modestbranding: 1,
-          rel: 0,
-          fs: 0,
-          playsinline: 1,
-          enablejsapi: 1
-        },
-        events: {
-          onReady: (event) => {
-            event.target.setVolume(35); // Volumen ambiental equilibrado
-            tryPlay();
-          },
-          onStateChange: (event) => {
-            if (event.data === YT.PlayerState.PLAYING) {
-              isPlaying = true;
-              toggleBtn.classList.remove('is-muted');
-              toggleBtn.classList.add('is-playing');
-            } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
-              isPlaying = false;
-              toggleBtn.classList.add('is-muted');
-              toggleBtn.classList.remove('is-playing');
-            }
-          }
-        }
-      });
-    };
-
-    function tryPlay() {
+    function playAudio() {
       if (isUserMuted) return;
-      if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
-        const playPromise = ytPlayer.playVideo();
-        isPlaying = true;
-        toggleBtn.classList.remove('is-muted');
-        toggleBtn.classList.add('is-playing');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            toggleBtn.classList.remove('is-muted');
+            toggleBtn.classList.add('is-playing');
+          })
+          .catch(() => {
+            // Esperando primer gesto del usuario
+            toggleBtn.classList.add('is-muted');
+            toggleBtn.classList.remove('is-playing');
+          });
       }
     }
 
     function pauseAudio() {
-      if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
-        ytPlayer.pauseVideo();
-        isPlaying = false;
-        toggleBtn.classList.add('is-muted');
-        toggleBtn.classList.remove('is-playing');
-      }
+      audio.pause();
+      toggleBtn.classList.add('is-muted');
+      toggleBtn.classList.remove('is-playing');
     }
+
+    // Intentar reproducción inmediata al cargar
+    playAudio();
 
     // Botón de encendido / apagado de música
     toggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (isPlaying) {
+      if (!audio.paused) {
         isUserMuted = true;
         pauseAudio();
       } else {
         isUserMuted = false;
-        tryPlay();
+        playAudio();
       }
     });
 
-    // Desbloqueo inmediato con el primer gesto natural del visitante (scroll, toque, clic o movimiento)
-    const unlockOnGesture = () => {
-      if (!isUserMuted && !isPlaying) {
-        tryPlay();
+    // Desbloqueo garantizado con el primer gesto natural del visitante (scroll, toque, clic o tecla)
+    const unlockOnFirstGesture = () => {
+      if (!isUserMuted && audio.paused) {
+        playAudio();
       }
     };
 
-    ['click', 'touchstart', 'scroll', 'pointerdown', 'keydown'].forEach(evt => {
-      window.addEventListener(evt, unlockOnGesture, { once: true, passive: true });
+    ['click', 'touchstart', 'scroll', 'pointerdown', 'keydown'].forEach((evt) => {
+      window.addEventListener(evt, unlockOnFirstGesture, { once: true, passive: true });
     });
   }
 });
