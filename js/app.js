@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const folioCode = `VIP-2026-${randomFolio}`;
 
       modalFolioDisplay.textContent = `FOLIO DE ACCESO: #${folioCode}`;
-      modalMsgCopy.innerHTML = `¡Hola, <strong>${escapeText(name)}</strong>! Tu registro prioritario para <strong>${escapeText(count)}</strong> ha sido guardado. Haz clic en el botón de abajo para <strong>unirte al Grupo Exclusivo de WhatsApp</strong> donde publicaremos en primicia las fechas oficiales, costos y paquetes.`;
+      modalMsgCopy.innerHTML = `¡Hola, <strong>${escapeText(name)}</strong>! Ya formas parte de nuestra lista prioritaria. Te avisaremos antes que nadie cuando el viaje esté listo para comenzar. Únete a continuación a nuestro <strong>Grupo Exclusivo de WhatsApp</strong> para recibir todas las primicias.`;
 
       // Enlace directo al Grupo Oficial de WhatsApp
       const waGroupUrl = 'https://chat.whatsapp.com/JhaAaFnj4kS4qPZj3wBbLe?s=cl&p=i&ilr=2';
@@ -106,10 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
         vipSection.classList.remove('is-hidden');
       }
       if (unlockedTitle) {
-        unlockedTitle.innerHTML = `¡BIENVENIDO/A, ${escapeText(name.toUpperCase())}!`;
+        unlockedTitle.innerHTML = `TU BOLETO ESTÁ RESERVADO 🎟️`;
       }
       if (unlockedDesc) {
-        unlockedDesc.innerHTML = `Tu Folio <strong>#${folioCode}</strong> está confirmado para <strong>${escapeText(count)}</strong>. Da el último paso y únete a nuestra <strong>comunidad privada en WhatsApp</strong> donde compartiremos en primicia los paquetes de inversión, fechas de sesiones y detrás de cámaras antes del lanzamiento general.`;
+        unlockedDesc.innerHTML = `¡Hola, <strong>${escapeText(name)}</strong>! Ya formas parte de nuestra lista prioritaria con el folio <strong>#${folioCode}</strong>. Te avisaremos antes que nadie cuando el viaje esté listo para comenzar. Únete a nuestra <strong>comunidad privada en WhatsApp</strong> para recibir novedades y primicias exclusivas.`;
       }
 
       // Guardar en LocalStorage

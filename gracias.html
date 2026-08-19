@@ -319,19 +319,19 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
-        <span>ACCESO PRIORITARIO · GRUPO PRIVADO VIP</span>
+        <span>ACCESO PRIORITARIO · LA ESTACIÓN DE LOS RECUERDOS</span>
       </div>
       
       <h1 class="vip-welcome-title" id="welcome-client-title">
-        ¡REGISTRO CONFIRMADO CON ÉXITO!
+        TU BOLETO ESTÁ RESERVADO 🎟️
       </h1>
 
       <div class="vip-folio-tag" id="welcome-folio-tag">
-        FOLIO VIP: #VIP-2026-0000
+        FOLIO PRIORITARIO: #VIP-2026-0000
       </div>
 
       <p class="vip-message-copy" id="welcome-message-copy">
-        Tu lugar preferencial para la experiencia de <strong>Navidad 2026</strong> ha sido guardado. Para recibir en primicia todas las fechas oficiales, paquetes y detalles antes que nadie, únete a continuación a nuestro <strong>Grupo Exclusivo de WhatsApp</strong>:
+        Ya formas parte de nuestra lista prioritaria. Te avisaremos antes que nadie cuando el viaje esté listo para comenzar. Únete a continuación a nuestro <strong>Grupo Exclusivo de WhatsApp</strong> para recibir todas las primicias y novedades:
       </p>
 
       <!-- Los 3 Beneficios Exclusivos -->
@@ -347,13 +347,13 @@
               <line x1="3" y1="10" x2="21" y2="10"></line>
             </svg>
           </div>
-          <h3 class="benefit-card-title">Primeras Fechas Disponibles</h3>
+          <h3 class="benefit-card-title">Primer Aviso de Apertura</h3>
           <p class="benefit-card-desc">
-            Acceso prioritario a la agenda para elegir tu día y horario favorito antes de abrirlo al público general.
+            Acceso prioritario a la agenda antes de abrirla al público general.
           </p>
         </div>
 
-        <!-- Beneficio 2: Preventa Exclusiva -->
+        <!-- Beneficio 2: Información Exclusiva -->
         <div class="vip-benefit-card">
           <div class="benefit-icon-wrap">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -361,9 +361,9 @@
               <line x1="7" y1="7" x2="7.01" y2="7"></line>
             </svg>
           </div>
-          <h3 class="benefit-card-title">Tarifas de Preventa</h3>
+          <h3 class="benefit-card-title">Detalles y Primicias</h3>
           <p class="benefit-card-desc">
-            Costos de inversión y paquetes especiales reservados únicamente para los miembros de esta lista VIP.
+            Información exclusiva reservada únicamente para los miembros de esta lista.
           </p>
         </div>
 
@@ -374,9 +374,9 @@
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
           </div>
-          <h3 class="benefit-card-title">Revelación del Set Completo</h3>
+          <h3 class="benefit-card-title">Vistazo al Set Completo</h3>
           <p class="benefit-card-desc">
-            Vistazo exclusivo en video y fotografía de la locomotora y la escenografía victoriana antes del estreno público.
+            Vistazo exclusivo en video y fotografía de la locomotora antes del estreno público.
           </p>
         </div>
 
@@ -410,13 +410,13 @@
       const msgEl = document.getElementById('welcome-message-copy');
 
       if (nombre) {
-        titleEl.textContent = `¡BIENVENIDO/A, ${nombre.toUpperCase()}!`;
+        titleEl.textContent = `TU BOLETO ESTÁ RESERVADO 🎟️`;
       }
       if (folio) {
-        folioEl.textContent = `FOLIO VIP: #${folio}`;
+        folioEl.textContent = `FOLIO PRIORITARIO: #${folio}`;
       }
-      if (nombre && personas) {
-        msgEl.innerHTML = `¡Hola, <strong>${nombre}</strong>! Tu registro prioritario para <strong>${personas}</strong> ha sido guardado. Ahora da el último paso uniéndote al <strong>Grupo Exclusivo de WhatsApp</strong> para acceder a estos beneficios antes que nadie:`;
+      if (nombre) {
+        msgEl.innerHTML = `¡Hola, <strong>${nombre}</strong>! Ya formas parte de nuestra lista prioritaria. Te avisaremos antes que nadie cuando el viaje esté listo para comenzar. Únete a continuación a nuestro <strong>Grupo Exclusivo de WhatsApp</strong> para recibir todas las primicias:`;
       }
 
       // Animación suave de Nieve en Canvas
