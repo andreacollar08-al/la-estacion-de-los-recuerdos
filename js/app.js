@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initGalleryLightbox();
   initParallaxUnfurlingGallery();
 
+  // 5.1 REPRODUCTOR DE MÚSICA NAVIDEÑA DE FONDO
+  initBackgroundAudioPlayer();
+
   // 6. REPRODUCTOR DE VIDEO RESUMEN INTERACTIVO
   const videoTrigger = document.getElementById('video-poster-trigger');
   const highlightVideo = document.getElementById('highlight-video');
@@ -707,5 +710,108 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderSnow();
+  }
+
+  // --------------------------------------------------------------------------
+  // 10. REPRODUCTOR DE MÚSICA NAVIDEÑA DE FONDO (YOUTUBE API INTEGRATION)
+  // --------------------------------------------------------------------------
+  function initBackgroundAudioPlayer() {
+    const playerContainer = document.getElementById('music-ambient-player');
+    const toggleBtn = document.getElementById('music-toggle-btn');
+    const statusLabel = document.getElementById('music-status-label');
+
+    if (!playerContainer || !toggleBtn) return;
+
+    let ytPlayer = null;
+    let isPlaying = false;
+    let userInitiated = false;
+
+    // Carga de la API IFrame de YouTube
+    if (!window.YT) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+
+    window.onYouTubeIframeAPIReady = function() {
+      ytPlayer = new YT.Player('yt-bg-audio', {
+        height: '1',
+        width: '1',
+        videoId: 'nPNNFa3jF3g',
+        playerVars: {
+          autoplay: 0,
+          loop: 1,
+          playlist: 'nPNNFa3jF3g',
+          controls: 0,
+          showinfo: 0,
+          modestbranding: 1,
+          rel: 0,
+          fs: 0,
+          playsinline: 1,
+          enablejsapi: 1
+        },
+        events: {
+          onReady: (event) => {
+            event.target.setVolume(38); // Nivel de volumen ambiental cálido y relajante
+            if (userInitiated) {
+              playAudio();
+            }
+          },
+          onStateChange: (event) => {
+            if (event.data === YT.PlayerState.PLAYING) {
+              isPlaying = true;
+              toggleBtn.classList.add('is-playing');
+              if (statusLabel) statusLabel.textContent = 'Reproduciendo';
+            } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+              isPlaying = false;
+              toggleBtn.classList.remove('is-playing');
+              if (statusLabel) statusLabel.textContent = 'Pausado · Tocar';
+            }
+          }
+        }
+      });
+    };
+
+    function playAudio() {
+      if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+        ytPlayer.playVideo();
+        isPlaying = true;
+        toggleBtn.classList.add('is-playing');
+        if (statusLabel) statusLabel.textContent = 'Reproduciendo';
+      }
+    }
+
+    function pauseAudio() {
+      if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+        ytPlayer.pauseVideo();
+        isPlaying = false;
+        toggleBtn.classList.remove('is-playing');
+        if (statusLabel) statusLabel.textContent = 'Pausado · Tocar';
+      }
+    }
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      userInitiated = true;
+      if (isPlaying) {
+        pauseAudio();
+      } else {
+        playAudio();
+      }
+    });
+
+    // Iniciar con suavidad en la primera interacción (clic o toque) del usuario en la web
+    const startAudioOnFirstInteraction = () => {
+      if (!userInitiated) {
+        userInitiated = true;
+        playAudio();
+      }
+      document.removeEventListener('click', startAudioOnFirstInteraction);
+      document.removeEventListener('touchstart', startAudioOnFirstInteraction);
+    };
+
+    document.addEventListener('click', startAudioOnFirstInteraction, { once: true });
+    document.addEventListener('touchstart', startAudioOnFirstInteraction, { once: true, passive: true });
   }
 });
