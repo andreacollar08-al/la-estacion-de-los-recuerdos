@@ -1257,45 +1257,62 @@ a {
   position: relative;
 }
 
-.artist-portrait-frame {
+.artist-portrait-circle-box {
   position: relative;
-  background: #0d0a07;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid rgba(191, 160, 96, 0.35);
-  box-shadow: var(--shadow-luxury);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.artist-portrait-frame img {
+.artist-portrait-circle {
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  border: 3px solid var(--text-gold);
+  overflow: hidden;
+  box-shadow: var(--shadow-luxury), 0 0 0 10px rgba(191, 160, 96, 0.12);
+  background: var(--bg-charcoal);
+  position: relative;
+}
+
+.artist-portrait-circle img {
   width: 100%;
   height: 100%;
-  max-height: 460px;
   object-fit: cover;
-  border-radius: 2px;
+  object-position: center top;
   display: block;
 }
 
 .artist-signature-badge {
   position: absolute;
-  bottom: -16px;
-  right: 24px;
+  bottom: -6px;
   background: var(--color-espresso);
   color: #fff;
   border: 1px solid var(--text-gold);
-  padding: 0.5rem 1.1rem;
-  border-radius: 2px;
+  padding: 0.45rem 1.15rem;
+  border-radius: 20px;
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 900px) {
   .about-artist-container {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .about-artist-text-col {
+    align-items: center;
+  }
+
+  .about-artist-stats-row {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -1310,70 +1327,40 @@ a {
   z-index: 20;
 }
 
-.faq-palette-box {
-  margin-top: 1.25rem;
-  padding: 1.25rem 1.4rem;
+.faq-palette-compact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+  padding: 0.65rem 0.85rem;
   background: rgba(18, 14, 10, 0.04);
   border: 1px solid rgba(191, 160, 96, 0.25);
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
-.faq-palette-title {
-  font-family: var(--font-sans);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-espresso);
-  margin-bottom: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.faq-palette-table-wrap {
-  overflow-x: auto;
-}
-
-.faq-palette-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.82rem;
-  min-width: 520px;
-}
-
-.faq-palette-table th {
-  text-align: left;
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  padding: 0.4rem 0.6rem;
-  border-bottom: 1px solid rgba(191, 160, 96, 0.2);
-}
-
-.faq-palette-table td {
-  padding: 0.55rem 0.6rem;
-  border-bottom: 1px solid rgba(191, 160, 96, 0.1);
-  color: var(--text-main);
-  vertical-align: middle;
-}
-
-.swatch-color-pill {
+.palette-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: #ffffff;
+  border: 1px solid rgba(191, 160, 96, 0.3);
+  padding: 0.28rem 0.6rem;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-.swatch-dot {
-  width: 22px;
-  height: 22px;
-  border-radius: 4px;
+.chip-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: var(--chip-color);
   border: 1px solid rgba(0, 0, 0, 0.15);
   flex-shrink: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .faq-container {
