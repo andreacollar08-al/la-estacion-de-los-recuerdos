@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navidad 2026 · Rubiel Photo Art | Historias Enmarcadas</title>
+  <meta name="description" content="Algo extraordinario está por comenzar. La experiencia navideña más mágica de la temporada en Palenque, Chiapas. Únete a la lista de reserva anticipada de Rubiel Photo Art.">
+  
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Navidad 2026 · Rubiel Photo Art | Historias Enmarcadas">
+  <meta property="og:description" content="Algo extraordinario está por comenzar. Reserva anticipada a las Mini Sesiones Navideñas 2026.">
+  <meta property="og:image" content="assets/images/hero_parchment_locomotive.jpg">
+
+  <!-- Google Fonts: Inspiradas en Secesión Vienesa / Exentrica (Cinzel Decorative, Marcellus, Cormorant Garamond, Jost) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- THESIS: Responsive luxury Victorian steam train pre-registration landing for Rubiel Photo Art. Perfect mobile layout showing full locomotive, desktop flare & chimney smoke, abundant star crystal snowfall. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->
+
+  <!-- Canvas de Nieve Flotante en Cristales de Estrella -->
+  <canvas id="snow-canvas" aria-hidden="true"></canvas>
+
+  <!-- ======================================================================
+       HEADER / BARRA DE NAVEGACIÓN SUPERIOR
+       ====================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="#inicio" class="header-brand" aria-label="Inicio de Rubiel Photo Art">
+        <span class="brand-main-title">RUBIEL PHOTO ART</span>
+        <span class="brand-main-slogan">HISTORIAS ENMARCADAS</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Navegación principal">
+        <a href="#inicio" class="nav-link">INICIO</a>
+        <a href="#experiencia" class="nav-link">EXPERIENCIA</a>
+        <a href="#video" class="nav-link">VIDEO</a>
+        <a href="#galeria" class="nav-link">GALERÍA</a>
+        <a href="#testimonios" class="nav-link">TESTIMONIOS</a>
+        <a href="#faq" class="nav-link">PREGUNTAS</a>
+        <a href="#reservas" class="nav-link">RESERVAS</a>
+        <a href="#contacto" class="nav-link">CONTACTO</a>
+      </nav>
+
+      <a href="#reservas" class="header-action-btn">
+        ÚNETE A LA LISTA
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         1. HERO / DESKTOP FULL-BLEED & MOBILE RESPONSIVE OPTIMIZADO
+         ====================================================================== -->
+    <section class="section-hero" id="inicio">
+      <!-- Escenario Visual Anclado: Locomotora, Humo, Niebla y Faro 100% alineados -->
+      <div class="hero-stage-backdrop" id="hero-stage-backdrop">
+        <img src="assets/images/hero_parchment_locomotive.jpg" alt="Locomotora de vapor victoriana" class="hero-stage-art desktop-art" id="hero-art-desktop">
+        <img src="assets/images/hero_parchment_locomotive_mobile.jpg" alt="Locomotora de vapor victoriana" class="hero-stage-art mobile-art" id="hero-art-mobile">
+        
+        <!-- Canvas de humo continuo de chimenea y vapor de ruedas -->
+        <canvas id="smoke-canvas" aria-hidden="true"></canvas>
+        
+        <!-- Destello del faro de luz sincronizado -->
+        <div class="train-lens-flare-wrap" id="train-lens-flare" aria-hidden="true">
+          <div class="flare-ambient-bloom"></div>
+          <div class="flare-star-rays"></div>
+          <div class="flare-streak-h"></div>
+          <div class="flare-core"></div>
+        </div>
+      </div>
+
+      <!-- Contenido tipográfico -->
+      <div class="hero-content-wrapper">
+        <div class="hero-text-block">
+          <div class="hero-eyebrow">P R Ó X I M A M E N T E</div>
+          
+          <div class="divider-x">
+            <span>✕</span>
+          </div>
+
+          <h1 class="hero-main-heading">
+            ALGO<br>
+            EXTRAORDINARIO<br>
+            ESTÁ POR<br>
+            COMENZAR.
+          </h1>
+
+          <div class="divider-x">
+            <span>✕</span>
+          </div>
+
+          <p class="hero-sub-statement">
+            La experiencia navideña más mágica de la temporada.
+          </p>
+
+          <div class="divider-x">
+            <span>✕</span>
+          </div>
+
+          <div class="hero-year-label">
+            N A V I D A D &nbsp; 2 0 2 6
+          </div>
+
+          <div class="hero-buttons-row">
+            <a href="#reservas" class="btn-dark-solid" id="btn-hero-join">
+              <span>ÚNETE A LA LISTA</span>
+            </a>
+            <a href="#experiencia" class="btn-outline">
+              <span>DESCUBRIR MÁS</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         2. SECCIÓN: UNA EXPERIENCIA NAVIDEÑA INOLVIDABLE (3 PILARES)
+         ====================================================================== -->
+    <section class="section-features" id="experiencia">
+      <div class="features-container">
+        <div class="features-header reveal-on-scroll">
+          <div class="features-eyebrow">U N A &nbsp; E X P E R I E N C I A</div>
+          <h2 class="features-title">NAVIDEÑA INOLVIDABLE</h2>
+          <div class="divider-x">
+            <span>✕</span>
+          </div>
+          <p class="features-desc">
+            Un viaje fotográfico único donde la magia de la Navidad cobra vida. Escenarios cuidadosamente diseñados, luz cálida y detalles que transforman cada imagen en un recuerdo eterno.
+          </p>
+        </div>
+
+        <div class="features-triplet-grid">
+          <!-- Pilar 1: Escenografía Temática -->
+          <div class="feature-column reveal-on-scroll reveal-delay-1">
+            <svg class="feature-engraved-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3h6v3H9zM8 6h8l2 5H6l2-5zM6 11v8h12v-8M10 19v2h4v-2M12 11v4"/>
+            </svg>
+            <h3 class="feature-column-title">ESCENOGRAFÍA TEMÁTICA</h3>
+            <p class="feature-column-text">Ambientes únicos inspirados en la magia navideña.</p>
+          </div>
+
+          <!-- Pilar 2: Recuerdos en Familia -->
+          <div class="feature-column reveal-on-scroll reveal-delay-2">
+            <svg class="feature-engraved-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <h3 class="feature-column-title">RECUERDOS EN FAMILIA</h3>
+            <p class="feature-column-text">Momentos que se convierten en historia para siempre.</p>
+          </div>
+
+          <!-- Pilar 3: Cupos Limitados -->
+          <div class="feature-column reveal-on-scroll reveal-delay-3">
+            <svg class="feature-engraved-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+              <circle cx="6" cy="12" r="1.5"></circle>
+              <circle cx="18" cy="12" r="1.5"></circle>
+              <path d="M10 6v12M14 6v12"/>
+            </svg>
+            <h3 class="feature-column-title">CUPOS LIMITADOS</h3>
+            <p class="feature-column-text">Una experiencia exclusiva con cupos muy limitados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. SECCIÓN: VIDEO RESUMEN DE SESIONES PASADAS
+         ====================================================================== -->
+    <section class="section-video-showcase" id="video">
+      <div class="video-showcase-container">
+        <div class="video-showcase-header reveal-on-scroll">
+          <div class="video-showcase-eyebrow">R E V I V E &nbsp; L A &nbsp; M A G I A</div>
+          <h2 class="video-showcase-title">EL CINE DE NUESTROS RECUERDOS</h2>
+          <div class="divider-x">
+            <span>✕</span>
+          </div>
+          <p class="video-showcase-desc">
+            Cada sesión navideña es una pequeña película familiar. Mira un breve resumen de cómo cobra vida la magia en nuestro set cinematográfico.
+          </p>
+        </div>
+
+        <div class="cinema-video-frame reveal-on-scroll reveal-delay-1">
+          <div class="video-media-wrapper" id="video-wrapper">
+            <!-- Portada interactiva del video con botón de reproducción -->
+            <div class="video-poster-placeholder" id="video-poster-trigger" role="button" tabindex="0" aria-label="Reproducir video resumen">
+              <div class="video-poster-overlay"></div>
+              <div class="video-play-btn">
+                <svg class="video-play-icon" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <div class="video-play-label">VER VIDEO RESUMEN</div>
+            </div>
+
+            <!-- Reproductor de video: puedes colocar tu archivo MP4 o tu enlace de YouTube / Vimeo -->
+            <video id="highlight-video" controls preload="metadata" poster="assets/images/scene_train_station.jpg">
+              <source src="assets/video/resumen_sesiones.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de video HTML5.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. SECCIÓN: SETS DE TEMPORADAS ANTERIORES (GALERÍA ELEGANTE)
+         ====================================================================== -->
+    <section class="section-dark-gallery" id="galeria">
+      <div class="gallery-container">
+        
+        <div class="gallery-frames-grid">
+          <!-- Cuadro 1: Xmas 2024 -->
+          <div class="ornate-gallery-frame reveal-on-scroll reveal-delay-1" role="button" tabindex="0" data-lightbox-idx="0" aria-label="Ver escena Xmas 2024 a pantalla completa">
+            <span class="frame-corner fc-tl"></span>
+            <span class="frame-corner fc-tr"></span>
+            <span class="frame-corner fc-bl"></span>
+            <span class="frame-corner fc-br"></span>
+            <div class="frame-img-box">
+              <span class="frame-season-badge">XMAS 2024</span>
+              <img src="assets/images/set_xmas_2024.jpg" alt="Sesión navideña set Xmas 2024 con nieve y farol - Rubiel Photo Art" loading="lazy">
+              <div class="gallery-zoom-overlay">
+                <span class="zoom-badge-text">VER EN DETALLE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cuadro 2: Candy Xmas 2025 (Familias y Niños) -->
+          <div class="ornate-gallery-frame reveal-on-scroll reveal-delay-2" role="button" tabindex="0" data-lightbox-idx="1" aria-label="Ver escena Candy Xmas 2025 Niños a pantalla completa">
+            <span class="frame-corner fc-tl"></span>
+            <span class="frame-corner fc-tr"></span>
+            <span class="frame-corner fc-bl"></span>
+            <span class="frame-corner fc-br"></span>
+            <div class="frame-img-box">
+              <span class="frame-season-badge">CANDY XMAS 2025</span>
+              <img src="assets/images/set_candy_xmas_2025_kids.jpg" alt="Sesión navideña Candy Xmas 2025 con bastones de caramelo y pijamas - Rubiel Photo Art" loading="lazy">
+              <div class="gallery-zoom-overlay">
+                <span class="zoom-badge-text">VER EN DETALLE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cuadro 3: Candy Xmas 2025 (Editorial) -->
+          <div class="ornate-gallery-frame reveal-on-scroll reveal-delay-3" role="button" tabindex="0" data-lightbox-idx="2" aria-label="Ver escena Candy Xmas 2025 Editorial a pantalla completa">
+            <span class="frame-corner fc-tl"></span>
+            <span class="frame-corner fc-tr"></span>
+            <span class="frame-corner fc-bl"></span>
+            <span class="frame-corner fc-br"></span>
+            <div class="frame-img-box">
+              <span class="frame-season-badge">CANDY XMAS 2025</span>
+              <img src="assets/images/set_candy_xmas_2025_editorial.jpg" alt="Sesión navideña Candy Xmas 2025 vestidos de gala - Rubiel Photo Art" loading="lazy">
+              <div class="gallery-zoom-overlay">
+                <span class="zoom-badge-text">VER EN DETALLE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-bottom-caption reveal-on-scroll">
+          S E T S &nbsp; D E &nbsp; T E M P O R A D A S &nbsp; A N T E R I O R E S
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. SECCIÓN: HISTORIAS VIVIDAS / EXPERIENCIAS Y RESEÑAS ANTERIORES
+         ====================================================================== -->
+    <section class="section-testimonials" id="testimonios">
+      <div class="testimonials-container">
+        <div class="testimonials-header reveal-on-scroll">
+          <div class="testimonials-eyebrow">L O S &nbsp; R E C U E R D O S</div>
+          <h2 class="testimonials-title">HISTORIAS VIVIDAS EN FAMILIA</h2>
+          <div class="divider-x">
+            <span>✕</span>
+          </div>
+          <p class="testimonials-desc">
+            Cada temporada, decenas de familias viajan con nosotros a través de la magia fotográfica. Esto es lo que han sentido al vivir la experiencia en años anteriores.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Testimonio 1 -->
+          <article class="testimonial-card reveal-on-scroll reveal-delay-1">
+            <div>
+              <div class="testimonial-quote-icon" aria-hidden="true">“</div>
+              <p class="testimonial-quote-text">
+                Nuestros hijos quedaron maravillados con la ambientación. Parecía una escena de película clásica. Ver sus caras de asombro y tener esas fotos hoy en nuestra sala no tiene precio. Rubiel tiene un don para capturar la emoción pura.
+              </p>
+            </div>
+            <div class="testimonial-author-box">
+              <span class="testimonial-author-name">Familia Morales Estrada</span>
+              <span class="testimonial-author-meta">Palenque, Chiapas · Temporada 2025</span>
+              <span class="testimonial-tag-badge">3er Año Consecutivo</span>
+            </div>
+          </article>
+
+          <!-- Testimonio 2 -->
+          <article class="testimonial-card reveal-on-scroll reveal-delay-2">
+            <div>
+              <div class="testimonial-quote-icon" aria-hidden="true">“</div>
+              <p class="testimonial-quote-text">
+                Viajamos desde Villahermosa solo para la sesión y superó todas nuestras expectativas. La paciencia con los más pequeños y el detalle de la escenografía fueron de otro nivel. Una experiencia que ya es una hermosa tradición familiar.
+              </p>
+            </div>
+            <div class="testimonial-author-box">
+              <span class="testimonial-author-name">Familia Castellanos V.</span>
+              <span class="testimonial-author-meta">Villahermosa, Tabasco · Temporada 2024</span>
+              <span class="testimonial-tag-badge">Sesión Generacional</span>
+            </div>
+          </article>
+
+          <!-- Testimonio 3 -->
+          <article class="testimonial-card reveal-on-scroll reveal-delay-3">
+            <div>
+              <div class="testimonial-quote-icon" aria-hidden="true">“</div>
+              <p class="testimonial-quote-text">
+                No es solo tomarse una foto, es una experiencia donde realmente sientes el espíritu navideño de otra época. La entrega y la calidad artística de las impresiones nos hicieron llorar de emoción. ¡Listos para la locomotora 2026!
+              </p>
+            </div>
+            <div class="testimonial-author-box">
+              <span class="testimonial-author-name">Familia Gutiérrez Lara</span>
+              <span class="testimonial-author-meta">Palenque, Chiapas · Temporada 2025</span>
+              <span class="testimonial-tag-badge">Familia de 5</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. SECCIÓN: PREGUNTAS FRECUENTES (FAQ ACORDEÓN EDITORIAL)
+         ====================================================================== -->
+    <section class="section-faq" id="faq">
+      <div class="faq-container">
+        <div class="faq-header reveal-on-scroll">
+          <div class="faq-eyebrow">D U D A S &nbsp; F R E C U E N T E S</div>
+          <h2 class="faq-title">TODO LO QUE DESEAS SABER</h2>
+          <div class="divider-x">
+            <span>✕</span>
+          </div>
+          <p class="faq-desc">
+            Queremos que tu familia viva una experiencia inolvidable de principio a fin. Aquí respondemos a las consultas más habituales antes de reservar tu lugar.
+          </p>
+        </div>
+
+        <div class="faq-accordion-wrap reveal-on-scroll reveal-delay-1">
+          <!-- FAQ 1 -->
+          <details class="faq-item" open>
+            <summary class="faq-question">
+              <span>¿Qué vestuario o paleta de colores recomiendan para esta temática?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Recomendamos tonos otoñales y navideños clásicos: vino tinto, verde pino, beige, marfil, mostaza, azul marino y texturas de lana o telas de época. Al confirmar tu lugar te enviaremos una guía visual de inspiración de vestuario paso a paso.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 2 -->
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿A partir de qué edad pueden participar los niños o bebés?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>¡No hay límite de edad! Desde recién nacidos hasta jóvenes y adultos. Nuestro equipo maneja dinámicas lúdicas y respetuosas con los tiempos de cada niño para lograr expresiones espontáneas y felices sin estrés.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 3 -->
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Pueden integrarse abuelitos o mascotas en la sesión?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Sí, nos encanta retratar sesiones generacionales con abuelos, padres e hijos juntos. Las mascotas tranquilas y educadas también son bienvenidas con previo aviso para coordinar el set adecuadamente.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 4 -->
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Con cuánta anticipación entregan las fotos para usarlas en Navidad?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Garantizamos la entrega de tu galería digital e impresiones con tiempo suficiente antes de Nochebuena para que puedas compartirlas, enmarcarlas o enviarlas como felicitación a tus seres queridos.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 5 -->
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Dónde se encuentra ubicado el estudio en Palenque?</span>
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Nuestro set cinematográfico estará ubicado en nuestro estudio climatizado y ambientado en Palenque, Chiapas. Los detalles exactos de acceso y estacionamiento se envían a los miembros registrados en la lista.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         6. SECCIÓN: ASEGURA TU LUGAR / RESERVA ANTICIPADA (FORMULARIO SOBRIO)
+         ====================================================================== -->
+    <section class="section-booking-form" id="reservas">
+      <div class="booking-container">
+        
+        <!-- Columna Izquierda: Información de Reserva -->
+        <div class="booking-info-col reveal-on-scroll">
+          <div class="booking-eyebrow">A S E G U R A &nbsp; T U &nbsp; L U G A R</div>
+          <h2 class="booking-main-title">RESERVA ANTICIPADA</h2>
+          <div class="divider-x" style="margin-left: 0;">
+            <span>✕</span>
+          </div>
+
+          <p class="booking-lead-text">
+            Sé parte de esta experiencia exclusiva. Déjanos tus datos y recibe información prioritaria sobre fechas, beneficios y acceso anticipado a reservas.
+          </p>
+
+          <!-- Sello de Garantía y Escasez Ética -->
+          <div class="booking-guarantee-badge">
+            <svg class="guarantee-shield-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <span>GARANTÍA DE ENTREGA A TIEMPO PARA NOCHEBUENA</span>
+          </div>
+
+          <div class="booking-perks-list">
+            <div class="perk-row">
+              <div class="perk-icon-circle">🎟️</div>
+              <span>Acceso anticipado a la apertura de reservas</span>
+            </div>
+
+            <div class="perk-row">
+              <div class="perk-icon-circle">🏷️</div>
+              <span>Promociones exclusivas para nuestra lista</span>
+            </div>
+
+            <div class="perk-row">
+              <div class="perk-icon-circle">📅</div>
+              <span>Información de fechas y paquetes especiales</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Tarjeta del Formulario -->
+        <div class="booking-form-box reveal-on-scroll reveal-delay-1">
+          <form class="formal-booking-form" id="vip-booking-form" novalidate>
+            <div class="form-2col-row">
+              <!-- Nombre -->
+              <div class="field-wrap">
+                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <input type="text" id="lead-name" class="field-input" placeholder="Nombre completo" required autocomplete="name">
+              </div>
+
+              <!-- Correo -->
+              <div class="field-wrap">
+                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <input type="email" id="lead-email" class="field-input" placeholder="Correo electrónico" required autocomplete="email">
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="field-wrap">
+              <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <input type="tel" id="lead-phone" class="field-input" placeholder="Teléfono / WhatsApp" required autocomplete="tel">
+            </div>
+
+            <!-- ¿Cuántas personas asistirán? -->
+            <div class="field-wrap">
+              <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <select id="lead-count" class="field-select" aria-label="Cantidad de personas que asistirán">
+                <option value="" disabled selected>¿Cuántas personas asistirán?</option>
+                <option value="1 a 2 personas">1 a 2 personas</option>
+                <option value="3 a 4 personas (Familia pequeña)">3 a 4 personas (Familia pequeña)</option>
+                <option value="5 a 6 personas (Familia grande)">5 a 6 personas (Familia grande)</option>
+                <option value="Más de 6 personas">Más de 6 personas</option>
+              </select>
+            </div>
+
+            <!-- Checkbox de Consentimiento -->
+            <label class="checkbox-consent-row">
+              <input type="checkbox" id="lead-consent" checked required>
+              <span>Acepto recibir información y promociones exclusivas.</span>
+            </label>
+
+            <!-- Botón Submit -->
+            <button type="submit" class="btn-dark-solid btn-form-submit" id="btn-submit-booking">
+              <span>QUIERO RECIBIR INFORMACIÓN</span>
+              <span>&nbsp; »</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+    <!-- ======================================================================
+         6. SECCIÓN: CANAL EXCLUSIVO · GRUPO PRIVADO DE WHATSAPP (DESBLOQUEADO TRAS REGISTRO)
+         ====================================================================== -->
+    <section class="section-vip-community is-hidden" id="grupo-vip" aria-live="polite">
+      <div class="vip-community-container">
+        <div class="vip-community-card">
+          <div class="vip-community-badge">ACCESO DESBLOQUEADO · GRUPO PRIVADO VIP</div>
+          <h2 class="vip-community-title" id="unlocked-vip-title">¡REGISTRO CONFIRMADO!</h2>
+          <div class="divider-x">
+            <span>✕</span>
+          </div>
+          <p class="vip-community-desc" id="unlocked-vip-desc">
+            Tu lugar prioritario está asegurado. Únete ahora a nuestra comunidad privada de WhatsApp para recibir antes que nadie las fechas de apertura de agenda, costos de paquetes y novedades exclusivas.
+          </p>
+
+          <div class="vip-perks-row">
+            <div class="vip-perk-item">
+              <span class="vip-perk-icon">📅</span>
+              <span class="vip-perk-text">Fechas y horarios preferenciales</span>
+            </div>
+            <div class="vip-perk-item">
+              <span class="vip-perk-icon">🏷️</span>
+              <span class="vip-perk-text">Tarifas de preventa y paquetes</span>
+            </div>
+            <div class="vip-perk-item">
+              <span class="vip-perk-icon">🚂</span>
+              <span class="vip-perk-text">Detrás de cámaras de la locomotora</span>
+            </div>
+          </div>
+
+          <a href="https://chat.whatsapp.com/JhaAaFnj4kS4qPZj3wBbLe?s=cl&p=i&ilr=2" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-community" id="unlocked-vip-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span>UNIRME AL GRUPO VIP DE WHATSAPP »</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       7. FOOTER MINIMALISTA
+       ====================================================================== -->
+  <footer class="site-footer" id="contacto">
+    <div class="footer-top-grid">
+      
+      <!-- Columna 1: Marca -->
+      <div class="footer-col-brand">
+        <div class="footer-brand-title">RUBIEL PHOTO ART</div>
+        <div class="footer-brand-slogan">HISTORIAS ENMARCADAS</div>
+        <p class="footer-brand-bio">
+          Fotografía que guarda emociones, recuerdos que trascienden.
+        </p>
+      </div>
+
+      <!-- Columna 2: Redes Sociales -->
+      <div class="footer-col-social">
+        <div class="footer-col-title">SÍGUENOS</div>
+        <div class="footer-social-icons">
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/Rubiel.photo/" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Facebook de Rubiel Photo">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/rubielphotoart/" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Instagram de Rubiel Photo Art">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/529161076073" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="WhatsApp directo Rubiel Photo Art">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna 3: Contacto -->
+      <div class="footer-col-contact">
+        <div class="footer-col-title">CONTACTO</div>
+        <div class="footer-contact-list">
+          <div class="contact-row-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>hola@rubielphotoart.com</span>
+          </div>
+
+          <a href="https://wa.me/529161076073" target="_blank" rel="noopener noreferrer" class="contact-row-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>+52 916 107 6073</span>
+          </a>
+
+          <div class="contact-row-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Palenque, Chiapas, México</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div>© 2026 Rubiel Photo Art. Todos los derechos reservados.</div>
+      <div class="footer-legal-links">
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Términos y Condiciones</a>
+        <a href="admin.html" style="opacity: 0.5; margin-left: 0.5rem;" title="Acceso exclusivo para Rubiel Photo Art">🔒 Panel Admin</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       MODAL: BILLETE DIGITAL VIP CONFIRMADO
+       ====================================================================== -->
+  <div class="modal-overlay" id="vip-modal" role="dialog" aria-modal="true" aria-labelledby="modal-ticket-title">
+    <div class="ticket-box">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar ventana">✕</button>
+      <div class="ticket-seal-stamp">ACCESO VIP<br>CONFIRMADO</div>
+      <h3 class="ticket-main-title" id="modal-ticket-title">¡REGISTRO EXITOSO!</h3>
+      <div class="ticket-folio-badge" id="modal-folio-display">FOLIO: #VIP-2026-0000</div>
+      <p class="ticket-personal-copy" id="modal-msg-copy">
+        Tu lugar prioritario ha sido guardado. Únete al Grupo Exclusivo de WhatsApp para recibir antes que nadie las fechas oficiales, costos y paquetes.
+      </p>
+      <a href="https://chat.whatsapp.com/JhaAaFnj4kS4qPZj3wBbLe?s=cl&p=i&ilr=2" class="btn-whatsapp-action" id="modal-whatsapp-btn" target="_blank" rel="noopener noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span>ENTRAR AL GRUPO VIP DE WHATSAPP »</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL: LIGHTBOX CINEMATOGRÁFICO DE GALERÍA
+       ====================================================================== -->
+  <div class="gallery-lightbox-modal" id="gallery-lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lightbox-title">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-dialog-box">
+      <button class="lightbox-close-btn" id="lightbox-close-btn" aria-label="Cerrar visor">✕</button>
+      <button class="lightbox-nav-btn lb-prev" id="lightbox-prev-btn" aria-label="Foto anterior">‹</button>
+      <button class="lightbox-nav-btn lb-next" id="lightbox-next-btn" aria-label="Foto siguiente">›</button>
+      
+      <div class="lightbox-image-wrap">
+        <img src="assets/images/set_xmas_2024.jpg" alt="Escenario navideño en alta resolución - Rubiel Photo Art" id="lightbox-img" class="lightbox-display-img">
+      </div>
+      
+      <div class="lightbox-caption-box">
+        <div class="lightbox-caption-title" id="lightbox-title">TEMPORADA XMAS 2024</div>
+        <p class="lightbox-caption-desc" id="lightbox-desc">
+          Escenografía navideña con chimenea de ladrillo, gran abeto iluminado, pampa grass, farol victoriano y efecto de nieve en estudio.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       BOTÓN FLOTANTE DISCRETO DE WHATSAPP (MÓVILES & ESCRITORIO)
+       ====================================================================== -->
+  <a href="https://wa.me/529161076073?text=Hola%20Rubiel%20Photo%20Art,%20tengo%20una%20duda%20sobre%20las%20sesiones%20navideñas%202026." target="_blank" rel="noopener noreferrer" class="sticky-whatsapp-btn" id="sticky-whatsapp-btn" aria-label="Escribir por WhatsApp a Rubiel Photo Art">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+    <span class="sticky-wa-label">¿Dudas? Escríbenos</span>
+  </a>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

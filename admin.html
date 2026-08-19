@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración | Rubiel Photo Art - Navidad 2026</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    :root {
+      --admin-bg: #0e0b08;
+      --admin-card: #15110d;
+      --admin-card-hover: #1c1612;
+      --admin-border: rgba(191, 160, 96, 0.25);
+      --admin-gold: #c5a059;
+      --admin-gold-light: #e6c88b;
+      --admin-green: #25d366;
+      --admin-amber: #f59e0b;
+      --admin-blue: #3b82f6;
+    }
+
+    body {
+      background-color: var(--admin-bg);
+      color: #ede6dc;
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .admin-header {
+      background: rgba(18, 14, 10, 0.95);
+      border-bottom: 1px solid var(--admin-border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    .admin-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .admin-brand-title {
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: #fff;
+    }
+
+    .admin-brand-sub {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      color: var(--admin-gold);
+      text-transform: uppercase;
+    }
+
+    .admin-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .btn-admin-link {
+      color: #ede6dc;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .btn-admin-link:hover {
+      color: var(--admin-gold-light);
+    }
+
+    /* Pantalla de Login */
+    .login-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .login-card {
+      background: var(--admin-card);
+      border: 1px solid var(--admin-border);
+      border-radius: 4px;
+      padding: 3rem 2.5rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    .login-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--admin-gold);
+      border: 1px solid rgba(191, 160, 96, 0.4);
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 1.25rem;
+    }
+
+    .login-title {
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #fff;
+      margin-bottom: 0.35rem;
+    }
+
+    .login-desc {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: #a89f91;
+      margin-bottom: 2rem;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 0.95rem 1.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--admin-border);
+      border-radius: 3px;
+      color: #fff;
+      font-size: 1rem;
+      text-align: center;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.25rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .login-input:focus {
+      border-color: var(--admin-gold);
+      box-shadow: 0 0 0 3px rgba(191, 160, 96, 0.25);
+    }
+
+    .btn-login-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--admin-gold);
+      color: #110d0a;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-login-submit:hover {
+      background: var(--admin-gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* Dashboard Principal */
+    .dashboard-container {
+      flex: 1;
+      max-width: 1300px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    .dashboard-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .dash-heading-title {
+      font-family: var(--font-title);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+
+    .dash-heading-subtitle {
+      font-size: 0.82rem;
+      color: #a89f91;
+      margin-top: 0.2rem;
+    }
+
+    /* Tarjetas de Métricas (KPIs) */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .kpi-card {
+      background: var(--admin-card);
+      border: 1px solid var(--admin-border);
+      border-radius: 4px;
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .kpi-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #a89f91;
+      margin-bottom: 0.5rem;
+    }
+
+    .kpi-value {
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .kpi-value.gold { color: var(--admin-gold-light); }
+    .kpi-value.green { color: var(--admin-green); }
+    .kpi-value.amber { color: var(--admin-amber); }
+
+    .kpi-subtext {
+      font-size: 0.75rem;
+      color: #8c8273;
+    }
+
+    /* Barra de Herramientas */
+    .toolbar-box {
+      background: var(--admin-card);
+      border: 1px solid var(--admin-border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .search-filter-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--admin-border);
+      border-radius: 3px;
+      color: #fff;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--admin-gold);
+    }
+
+    .filter-select {
+      padding: 0.7rem 1rem;
+      background: #1c1612;
+      border: 1px solid var(--admin-border);
+      border-radius: 3px;
+      color: #fff;
+      font-size: 0.85rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .action-buttons-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-action-admin {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 3px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+
+    .btn-export-csv {
+      background: rgba(37, 211, 102, 0.15);
+      border-color: rgba(37, 211, 102, 0.4);
+      color: #25d366;
+    }
+
+    .btn-export-csv:hover {
+      background: #25d366;
+      color: #0b2214;
+    }
+
+    .btn-add-manual {
+      background: rgba(191, 160, 96, 0.2);
+      border-color: var(--admin-gold);
+      color: var(--admin-gold-light);
+    }
+
+    .btn-add-manual:hover {
+      background: var(--admin-gold);
+      color: #110d0a;
+    }
+
+    /* Tabla de Clientes */
+    .table-responsive-wrap {
+      background: var(--admin-card);
+      border: 1px solid var(--admin-border);
+      border-radius: 4px;
+      overflow-x: auto;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+
+    .admin-table th {
+      background: #110d09;
+      color: var(--admin-gold-light);
+      font-family: var(--font-title);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 1.1rem 1.2rem;
+      border-bottom: 1px solid var(--admin-border);
+      white-space: nowrap;
+    }
+
+    .admin-table td {
+      padding: 1.1rem 1.2rem;
+      border-bottom: 1px solid rgba(191, 160, 96, 0.1);
+      color: #ded7cc;
+      vertical-align: middle;
+    }
+
+    .admin-table tbody tr:hover {
+      background: var(--admin-card-hover);
+    }
+
+    .folio-badge-cell {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      color: var(--admin-gold);
+      letter-spacing: 0.05em;
+    }
+
+    .client-name-cell {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .wa-chat-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      color: #25d366;
+      padding: 0.35rem 0.65rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.78rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .wa-chat-btn:hover {
+      background: #25d366;
+      color: #0b2214;
+    }
+
+    .status-select {
+      background: #191410;
+      border: 1px solid var(--admin-border);
+      border-radius: 3px;
+      color: #ded7cc;
+      font-size: 0.78rem;
+      padding: 0.35rem 0.5rem;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .status-select.Pendiente { color: var(--admin-amber); border-color: rgba(245, 158, 11, 0.4); }
+    .status-select.Contactado { color: var(--admin-blue); border-color: rgba(59, 130, 246, 0.4); }
+    .status-select.Apartado { color: var(--admin-green); border-color: rgba(37, 211, 102, 0.4); }
+
+    .btn-delete-row {
+      background: none;
+      border: none;
+      color: #8c8273;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.3rem 0.5rem;
+      border-radius: 3px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .btn-delete-row:hover {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    .empty-state-box {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #a89f91;
+    }
+
+    .empty-state-title {
+      font-family: var(--font-title);
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Modal Nuevo Registro Manual */
+    .admin-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 8, 6, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s;
+    }
+
+    .admin-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .admin-modal-card {
+      background: var(--admin-card);
+      border: 1px solid var(--admin-gold);
+      border-radius: 4px;
+      max-width: 480px;
+      width: 100%;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      position: relative;
+    }
+
+    .modal-close-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: #a89f91;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 980px) {
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+      .toolbar-box {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabecera del Panel -->
+  <header class="admin-header">
+    <div class="admin-brand">
+      <span class="admin-brand-title">RUBIEL PHOTO ART</span>
+      <span class="admin-brand-sub">PANEL VIP · NAVIDAD 2026</span>
+    </div>
+
+    <div class="admin-nav-actions">
+      <a href="index.html" class="btn-admin-link">← Ir a la Web Principal</a>
+      <button id="btn-logout" class="btn-admin-link" style="background:none; border:none; cursor:pointer; display:none;">Cerrar Sesión</button>
+    </div>
+  </header>
+
+  <!-- PANTALLA 1: ACCESO POR PIN -->
+  <main class="login-container" id="login-screen">
+    <div class="login-card">
+      <div class="login-badge">ZONA RESTRINGIDA</div>
+      <h1 class="login-title">PANEL DE REGISTROS</h1>
+      <p class="login-desc">Introduce tu PIN de administrador para consultar la base de datos de clientes.</p>
+
+      <form id="login-form">
+        <input type="password" id="admin-pin" class="login-input" placeholder="••••" maxlength="10" required autofocus>
+        <button type="submit" class="btn-login-submit">DESBLOQUEAR PANEL »</button>
+      </form>
+      <p style="font-size: 0.72rem; color: #8c8273; margin-top: 1.25rem;">(PIN inicial por defecto: <strong>2026</strong>)</p>
+    </div>
+  </main>
+
+  <!-- PANTALLA 2: DASHBOARD DE CLIENTES REGISTRADOS -->
+  <main class="dashboard-container" id="dashboard-screen" style="display: none;">
+    
+    <div class="dashboard-title-row">
+      <div>
+        <h1 class="dash-heading-title">CLIENTES DE PREVENTA NAVIDAD 2026</h1>
+        <div class="dash-heading-subtitle">Base de datos en tiempo real de familias registradas para la locomotora.</div>
+      </div>
+
+      <div class="action-buttons-group">
+        <button class="btn-action-admin btn-add-manual" id="btn-open-manual-modal">
+          <span>+</span>
+          <span>Añadir Registro</span>
+        </button>
+        <button class="btn-action-admin btn-export-csv" id="btn-export-csv">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Descargar Excel (.CSV)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-label">Total de Registros</span>
+        <span class="kpi-value gold" id="kpi-total">0</span>
+        <span class="kpi-subtext">Familias en lista de preventa</span>
+      </div>
+
+      <div class="kpi-card">
+        <span class="kpi-label">Pendientes de Contactar</span>
+        <span class="kpi-value amber" id="kpi-pending">0</span>
+        <span class="kpi-subtext">En espera de confirmación</span>
+      </div>
+
+      <div class="kpi-card">
+        <span class="kpi-label">Contactados / En Proceso</span>
+        <span class="kpi-value" style="color: #3b82f6;" id="kpi-contacted">0</span>
+        <span class="kpi-subtext">En seguimiento por WhatsApp</span>
+      </div>
+
+      <div class="kpi-card">
+        <span class="kpi-label">Fechas Apartadas</span>
+        <span class="kpi-value green" id="kpi-confirmed">0</span>
+        <span class="kpi-subtext">Con anticipo o cupo asegurado</span>
+      </div>
+    </div>
+
+    <!-- Barra de Búsqueda y Filtros -->
+    <div class="toolbar-box">
+      <div class="search-filter-group">
+        <input type="text" id="search-input" class="search-input" placeholder="🔍 Buscar por nombre, WhatsApp, correo o folio...">
+        
+        <select id="filter-status" class="filter-select">
+          <option value="ALL">Todos los Estados</option>
+          <option value="Pendiente">Solo Pendientes</option>
+          <option value="Contactado">Solo Contactados</option>
+          <option value="Apartado">Solo Apartados</option>
+        </select>
+      </div>
+
+      <div style="font-size: 0.78rem; color: #8c8273;">
+        Mostrando <strong id="displayed-count" style="color: #fff;">0</strong> de <strong id="total-count" style="color: #fff;">0</strong> registros
+      </div>
+    </div>
+
+    <!-- Tabla -->
+    <div class="table-responsive-wrap">
+      <table class="admin-table" id="leads-table">
+        <thead>
+          <tr>
+            <th>Folio VIP</th>
+            <th>Fecha / Hora</th>
+            <th>Nombre del Cliente</th>
+            <th>WhatsApp</th>
+            <th>Correo Electrónico</th>
+            <th>Personas</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="leads-tbody">
+          <!-- Rellenado dinámicamente con JavaScript -->
+        </tbody>
+      </table>
+
+      <div class="empty-state-box" id="empty-state" style="display: none;">
+        <div class="empty-state-title">Aún no hay clientes registrados</div>
+        <p>Cuando los clientes llenen el formulario en la web principal, aparecerán automáticamente en esta tabla.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODAL: REGISTRO MANUAL -->
+  <div class="admin-modal" id="manual-modal">
+    <div class="admin-modal-card">
+      <button class="modal-close-icon" id="btn-close-manual-modal">✕</button>
+      <h3 style="font-family: var(--font-title); color: #fff; font-size: 1.2rem; margin-bottom: 0.35rem;">AÑADIR REGISTRO MANUAL</h3>
+      <p style="font-size: 0.82rem; color: #a89f91; margin-bottom: 1.5rem;">Para clientes que llamen o escriban por mensaje directo.</p>
+
+      <form id="manual-lead-form" style="display: flex; flex-direction: column; gap: 1rem;">
+        <input type="text" id="manual-name" class="login-input" placeholder="Nombre completo" required style="text-align: left; letter-spacing: normal;">
+        <input type="tel" id="manual-phone" class="login-input" placeholder="Número de WhatsApp (ej. 9161076073)" required style="text-align: left; letter-spacing: normal;">
+        <input type="email" id="manual-email" class="login-input" placeholder="Correo electrónico (opcional)" style="text-align: left; letter-spacing: normal;">
+        
+        <select id="manual-count" class="filter-select" style="padding: 0.85rem; width: 100%;">
+          <option value="Familia (3 a 4 personas)">Familia (3 a 4 personas)</option>
+          <option value="Pareja / Individual">Pareja / Individual</option>
+          <option value="5 a 6 personas (Familia grande)">5 a 6 personas (Familia grande)</option>
+          <option value="Más de 6 personas">Más de 6 personas</option>
+        </select>
+
+        <button type="submit" class="btn-login-submit" style="margin-top: 0.5rem;">GUARDAR CLIENTE »</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

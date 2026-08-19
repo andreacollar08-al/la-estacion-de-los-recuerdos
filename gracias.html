@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Bienvenido a la Lista VIP! | Rubiel Photo Art - Navidad 2026</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    :root {
+      --vip-bg: #0d0a07;
+      --vip-card: #140f0b;
+      --vip-card-hover: #1b1510;
+      --vip-border: rgba(191, 160, 96, 0.35);
+      --vip-gold: #c5a059;
+      --vip-gold-light: #e8cca0;
+      --vip-green: #25d366;
+      --font-title: 'Marcellus', serif;
+      --font-sans: 'Jost', sans-serif;
+      --font-serif: 'Cormorant Garamond', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--vip-bg);
+      background-image: 
+        radial-gradient(circle at center top, rgba(191, 160, 96, 0.08) 0%, transparent 65%),
+        linear-gradient(180deg, #0b0806 0%, #140e0a 50%, #0b0806 100%);
+      color: #ede6dc;
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Canvas de Nieve de Estrellas */
+    #vip-snow-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Barra Superior de Marca */
+    .vip-brand-header {
+      position: absolute;
+      top: 1.5rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .brand-logo-main {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      color: #ffffff;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    .brand-logo-main .art-gold {
+      color: var(--vip-gold-light);
+      font-weight: 800;
+    }
+
+    .brand-slogan-sub {
+      display: block;
+      font-size: 0.54rem;
+      font-weight: 700;
+      letter-spacing: 0.38em;
+      color: var(--vip-gold);
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    /* Tarjeta Principal */
+    .vip-welcome-container {
+      position: relative;
+      z-index: 10;
+      max-width: 860px;
+      width: 100%;
+      margin: 4.5rem auto 2rem;
+    }
+
+    .vip-main-card {
+      background: var(--vip-card);
+      border: 1px solid var(--vip-border);
+      border-radius: 4px;
+      padding: 3.5rem 3rem;
+      text-align: center;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85);
+      position: relative;
+    }
+
+    /* Esquinas doradas de cuadro clásico */
+    .card-corner {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--vip-gold);
+      pointer-events: none;
+      opacity: 0.85;
+    }
+    .cc-tl { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+    .cc-tr { top: 6px; right: 6px; border-left: none; border-bottom: none; }
+    .cc-bl { bottom: 6px; left: 6px; border-right: none; border-top: none; }
+    .cc-br { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+
+    .vip-top-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--vip-green);
+      background: rgba(37, 211, 102, 0.1);
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      padding: 0.4rem 1.1rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    .vip-welcome-title {
+      font-family: var(--font-title);
+      font-size: clamp(1.6rem, 3.4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 0.65rem;
+    }
+
+    .vip-folio-tag {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--vip-gold-light);
+      background: rgba(191, 160, 96, 0.14);
+      border: 1px solid rgba(191, 160, 96, 0.4);
+      padding: 0.45rem 1.25rem;
+      border-radius: 2px;
+      margin: 0.5rem auto 1.6rem;
+    }
+
+    .vip-message-copy {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.7;
+      color: #e5dfd5;
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .vip-message-copy strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    /* Grilla de los 3 Beneficios Exclusivos */
+    .vip-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.75rem;
+      text-align: left;
+    }
+
+    .vip-benefit-card {
+      background: #18120d;
+      border: 1px solid rgba(191, 160, 96, 0.22);
+      border-radius: 3px;
+      padding: 1.6rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s, background-color 0.2s;
+    }
+
+    .vip-benefit-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--vip-gold);
+      background: var(--vip-card-hover);
+    }
+
+    .benefit-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(191, 160, 96, 0.12);
+      border: 1px solid rgba(191, 160, 96, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--vip-gold-light);
+      margin-bottom: 1.1rem;
+    }
+
+    .benefit-card-title {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+
+    .benefit-card-desc {
+      font-family: var(--font-sans);
+      font-size: 0.84rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #b8aea0;
+    }
+
+    /* Botón Grande de WhatsApp */
+    .btn-whatsapp-hero {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: var(--vip-green);
+      color: #0b2214;
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1.15rem 2.5rem;
+      border-radius: 3px;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .btn-whatsapp-hero:hover {
+      background: #2ee672;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 32px rgba(0, 0, 0, 0.65);
+    }
+
+    .back-home-link {
+      display: inline-block;
+      margin-top: 1.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8c8273;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-home-link:hover {
+      color: var(--vip-gold-light);
+    }
+
+    @media (max-width: 820px) {
+      .vip-benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .vip-main-card {
+        padding: 2.5rem 1.5rem;
+      }
+      .vip-welcome-container {
+        margin-top: 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas de Nieve Cristalina -->
+  <canvas id="vip-snow-canvas"></canvas>
+
+  <!-- Logo de Marca Superior -->
+  <header class="vip-brand-header">
+    <a href="index.html" style="text-decoration: none;">
+      <span class="brand-logo-main">RUBIEL <span class="art-gold">PHOTO ART</span></span>
+      <span class="brand-slogan-sub">HISTORIAS ENMARCADAS</span>
+    </a>
+  </header>
+
+  <div class="vip-welcome-container">
+    <div class="vip-main-card">
+      <span class="card-corner cc-tl"></span>
+      <span class="card-corner cc-tr"></span>
+      <span class="card-corner cc-bl"></span>
+      <span class="card-corner cc-br"></span>
+
+      <div class="vip-top-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>ACCESO PRIORITARIO · GRUPO PRIVADO VIP</span>
+      </div>
+      
+      <h1 class="vip-welcome-title" id="welcome-client-title">
+        ¡REGISTRO CONFIRMADO CON ÉXITO!
+      </h1>
+
+      <div class="vip-folio-tag" id="welcome-folio-tag">
+        FOLIO VIP: #VIP-2026-0000
+      </div>
+
+      <p class="vip-message-copy" id="welcome-message-copy">
+        Tu lugar preferencial para la experiencia de <strong>Navidad 2026</strong> ha sido guardado. Para recibir en primicia todas las fechas oficiales, paquetes y detalles antes que nadie, únete a continuación a nuestro <strong>Grupo Exclusivo de WhatsApp</strong>:
+      </p>
+
+      <!-- Los 3 Beneficios Exclusivos -->
+      <div class="vip-benefits-grid">
+        
+        <!-- Beneficio 1: Primeras Fechas -->
+        <div class="vip-benefit-card">
+          <div class="benefit-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <h3 class="benefit-card-title">Primeras Fechas Disponibles</h3>
+          <p class="benefit-card-desc">
+            Acceso prioritario a la agenda para elegir tu día y horario favorito antes de abrirlo al público general.
+          </p>
+        </div>
+
+        <!-- Beneficio 2: Preventa Exclusiva -->
+        <div class="vip-benefit-card">
+          <div class="benefit-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+              <line x1="7" y1="7" x2="7.01" y2="7"></line>
+            </svg>
+          </div>
+          <h3 class="benefit-card-title">Tarifas de Preventa</h3>
+          <p class="benefit-card-desc">
+            Costos de inversión y paquetes especiales reservados únicamente para los miembros de esta lista VIP.
+          </p>
+        </div>
+
+        <!-- Beneficio 3: Revelación del Set Completo -->
+        <div class="vip-benefit-card">
+          <div class="benefit-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <h3 class="benefit-card-title">Revelación del Set Completo</h3>
+          <p class="benefit-card-desc">
+            Vistazo exclusivo en video y fotografía de la locomotora y la escenografía victoriana antes del estreno público.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Botón de WhatsApp -->
+      <a href="https://chat.whatsapp.com/JhaAaFnj4kS4qPZj3wBbLe?s=cl&p=i&ilr=2" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero" id="btn-join-whatsapp">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span>UNIRME AL GRUPO VIP DE WHATSAPP »</span>
+      </a>
+
+      <div>
+        <a href="index.html" class="back-home-link">← Volver a la página principal</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Personalización dinámica a partir de los parámetros de URL o LocalStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const nombre = params.get('nombre');
+      const folio = params.get('folio');
+      const personas = params.get('personas');
+
+      const titleEl = document.getElementById('welcome-client-title');
+      const folioEl = document.getElementById('welcome-folio-tag');
+      const msgEl = document.getElementById('welcome-message-copy');
+
+      if (nombre) {
+        titleEl.textContent = `¡BIENVENIDO/A, ${nombre.toUpperCase()}!`;
+      }
+      if (folio) {
+        folioEl.textContent = `FOLIO VIP: #${folio}`;
+      }
+      if (nombre && personas) {
+        msgEl.innerHTML = `¡Hola, <strong>${nombre}</strong>! Tu registro prioritario para <strong>${personas}</strong> ha sido guardado. Ahora da el último paso uniéndote al <strong>Grupo Exclusivo de WhatsApp</strong> para acceder a estos beneficios antes que nadie:`;
+      }
+
+      // Animación suave de Nieve en Canvas
+      const canvas = document.getElementById('vip-snow-canvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
+
+        window.addEventListener('resize', () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const flakes = [];
+        const count = width > 768 ? 65 : 35;
+        for (let i = 0; i < count; i++) {
+          flakes.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            r: Math.random() * 3.5 + 1.5,
+            sy: Math.random() * 1.2 + 0.5,
+            sx: Math.random() * 0.6 - 0.3,
+            op: Math.random() * 0.5 + 0.3
+          });
+        }
+
+        function drawSnow() {
+          ctx.clearRect(0, 0, width, height);
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+
+          for (let i = 0; i < flakes.length; i++) {
+            const f = flakes[i];
+            f.y += f.sy;
+            f.x += f.sx;
+            if (f.y > height + 5) f.y = -5;
+            if (f.x > width + 5) f.x = -5;
+            if (f.x < -5) f.x = width + 5;
+
+            ctx.beginPath();
+            ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${f.op})`;
+            ctx.fill();
+          }
+          requestAnimationFrame(drawSnow);
+        }
+        drawSnow();
+      }
+    });
+  </script>
+</body>
+</html>
