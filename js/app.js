@@ -718,9 +718,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function initBackgroundAudioPlayer() {
     const audio = document.getElementById('bg-audio-player');
     const toggleBtn = document.getElementById('music-toggle-btn');
+    const labelText = document.getElementById('speaker-label-text');
     if (!audio || !toggleBtn) return;
 
-    audio.volume = 0.35; // Volumen ambiental equilibrado
+    audio.volume = 0.35; // Volumen ambiental idóneo
     let isUserMuted = false;
 
     function playAudio() {
@@ -731,11 +732,14 @@ document.addEventListener('DOMContentLoaded', () => {
           .then(() => {
             toggleBtn.classList.remove('is-muted');
             toggleBtn.classList.add('is-playing');
+            if (labelText) labelText.textContent = 'Apagar Música';
+            toggleBtn.setAttribute('title', 'Apagar música navideña');
           })
           .catch(() => {
-            // Esperando primer gesto del usuario
+            // Esperando primer micro-gesto del navegador
             toggleBtn.classList.add('is-muted');
             toggleBtn.classList.remove('is-playing');
+            if (labelText) labelText.textContent = 'Apagar Música';
           });
       }
     }
@@ -744,12 +748,15 @@ document.addEventListener('DOMContentLoaded', () => {
       audio.pause();
       toggleBtn.classList.add('is-muted');
       toggleBtn.classList.remove('is-playing');
+      if (labelText) labelText.textContent = 'Activar Música';
+      toggleBtn.setAttribute('title', 'Activar música navideña');
     }
 
-    // Intentar reproducción inmediata al cargar
+    // Intentar reproducción inmediata
     playAudio();
+    window.addEventListener('load', playAudio);
 
-    // Botón de encendido / apagado de música
+    // Botón para apagar o encender música
     toggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       if (!audio.paused) {
@@ -761,15 +768,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Desbloqueo garantizado con el primer gesto natural del visitante (scroll, toque, clic o tecla)
-    const unlockOnFirstGesture = () => {
+    // Desbloqueo ultra rápido al primer movimiento o scroll
+    const unlockOnGesture = () => {
       if (!isUserMuted && audio.paused) {
         playAudio();
       }
     };
 
-    ['click', 'touchstart', 'scroll', 'pointerdown', 'keydown'].forEach((evt) => {
-      window.addEventListener(evt, unlockOnFirstGesture, { once: true, passive: true });
+    ['pointerdown', 'touchstart', 'scroll', 'touchmove', 'wheel', 'keydown', 'click'].forEach((evt) => {
+      window.addEventListener(evt, unlockOnGesture, { once: true, passive: true });
     });
   }
 });

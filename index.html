@@ -1010,14 +1010,14 @@
   <!-- ======================================================================
        REPRODUCTOR NATIVO DE AUDIO HTML5 (BANDA SONORA NAVIDEÑA)
        ====================================================================== -->
-  <audio id="bg-audio-player" loop preload="auto" playsinline>
+  <audio id="bg-audio-player" autoplay loop preload="auto" playsinline src="assets/audio/navidad_soundtrack.m4a">
     <source src="assets/audio/navidad_soundtrack.m4a" type="audio/mp4">
     <source src="assets/audio/navidad_soundtrack.mp4" type="audio/mp4">
   </audio>
 
-  <!-- Botón Sutil de Bocina / Control de Audio en Esquina Inferior Izquierda -->
+  <!-- Botón Sutil de Bocina / Opción de Apagar Música en Esquina Inferior Izquierda -->
   <div class="subtle-audio-control" id="subtle-audio-control">
-    <button class="btn-subtle-speaker is-playing" id="music-toggle-btn" aria-label="Apagar o activar música navideña de fondo" title="Música navideña de fondo (Tocar para apagar/encender)">
+    <button class="btn-subtle-speaker is-playing" id="music-toggle-btn" aria-label="Apagar música de fondo" title="Apagar música navideña">
       <!-- Icono Bocina Encendida con Ondas -->
       <svg class="speaker-icon icon-sound-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -1032,7 +1032,7 @@
         <line x1="17" y1="9" x2="23" y2="15"></line>
       </svg>
       
-      <span class="subtle-speaker-label">Música</span>
+      <span class="subtle-speaker-label" id="speaker-label-text">Apagar Música</span>
     </button>
   </div>
 
