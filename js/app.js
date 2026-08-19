@@ -721,7 +721,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const labelText = document.getElementById('speaker-label-text');
     if (!audio || !toggleBtn) return;
 
-    audio.volume = 0.35; // Volumen ambiental idóneo
+    audio.volume = 0.18; // Volumen ambiental sutil (a la mitad de intensidad)
     let isUserMuted = false;
 
     function playAudio() {
