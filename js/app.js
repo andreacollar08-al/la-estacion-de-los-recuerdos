@@ -211,34 +211,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const galleryData = [
       {
-        src: 'assets/images/set_xmas_2024.jpg',
-        title: 'TEMPORADA XMAS 2024',
-        desc: 'Escenografía navideña con chimenea de ladrillo, gran abeto iluminado, pampa grass, farol victoriano y efecto de nieve en estudio.'
+        src: 'assets/images/set_anterior_1.jpg',
+        title: 'SETS DE TEMPORADAS ANTERIORES',
+        desc: ''
       },
       {
-        src: 'assets/images/set_candy_xmas_2025_kids.jpg',
-        title: 'CANDY XMAS 2025 · FAMILIAS & NIÑOS',
-        desc: 'Sesión divertida y mágica con bastones de caramelo gigantes, fondo festivo brillante y atuendos temáticos para los más pequeños.'
+        src: 'assets/images/set_anterior_2.jpg',
+        title: 'SETS DE TEMPORADAS ANTERIORES',
+        desc: ''
       },
       {
-        src: 'assets/images/set_candy_xmas_2025_editorial.jpg',
-        title: 'CANDY XMAS 2025 · EDITORIAL & GALA',
-        desc: 'Retrato de elegancia navideña con vestidos de noche, esferas doradas y ambientación glamourosa para jóvenes y familias.'
+        src: 'assets/images/set_anterior_3.jpg',
+        title: 'SETS DE TEMPORADAS ANTERIORES',
+        desc: ''
       },
       {
-        src: 'assets/images/family_nostalgia.jpg',
-        title: 'HISTORIAS ENMARCADAS · RETRATO FAMILIAR',
-        desc: 'Capturando la calidez, la unión y la complicidad genuina entre padres e hijos con iluminación cinematográfica cálida.'
+        src: 'assets/images/set_anterior_4.jpg',
+        title: 'SETS DE TEMPORADAS ANTERIORES',
+        desc: ''
       },
       {
-        src: 'assets/images/family_train_door.jpg',
-        title: 'EL VAGÓN DE LA NAVIDAD · ESTACIÓN VINTAGE',
-        desc: 'Una experiencia temática inolvidable abordando la magia navideña en escenarios construidos a escala real.'
-      },
-      {
-        src: 'assets/images/poster_rubiel_art.jpg',
-        title: 'RUBIEL PHOTO ART · PRODUCCIÓN & ARTE',
-        desc: 'Más de 10 años creando experiencias visuales únicas y mágicas en Palenque, Chiapas y Latinoamérica.'
+        src: 'assets/images/set_anterior_5.jpg',
+        title: 'SETS DE TEMPORADAS ANTERIORES',
+        desc: ''
       }
     ];
 

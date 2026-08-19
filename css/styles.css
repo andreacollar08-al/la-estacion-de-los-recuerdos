@@ -804,33 +804,19 @@ a {
   z-index: 20;
 }
 
-.gallery-container {
-  max-width: var(--max-width);
-  margin: 0 auto;
+.gallery-clean-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-.carousel-3d-hint {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-family: var(--font-sans);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+.gallery-clean-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-gold);
-  opacity: 0.85;
-  margin-bottom: 1.75rem;
-}
-
-.carousel-3d-hint svg {
-  animation: hintSwipeAnim 2.4s ease-in-out infinite;
-}
-
-@keyframes hintSwipeAnim {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(6px); }
+  margin-bottom: 0.4rem;
 }
 
 .carousel-3d-stage {
