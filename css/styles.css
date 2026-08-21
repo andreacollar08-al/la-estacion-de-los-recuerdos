@@ -2565,8 +2565,8 @@ a {
     z-index: 5;
     pointer-events: none;
     background:
-      radial-gradient(ellipse 92% 42% at 50% 61%, rgba(20, 15, 11, 0.68) 0%, rgba(20, 15, 11, 0.32) 56%, transparent 100%),
-      linear-gradient(180deg, transparent 27%, rgba(20, 15, 11, 0.22) 43%, rgba(20, 15, 11, 0.78) 67%, rgba(20, 15, 11, 0.94) 100%);
+      radial-gradient(ellipse 92% 34% at 50% 76%, rgba(20, 15, 11, 0.72) 0%, rgba(20, 15, 11, 0.34) 58%, transparent 100%),
+      linear-gradient(180deg, transparent 43%, rgba(20, 15, 11, 0.12) 56%, rgba(20, 15, 11, 0.7) 78%, rgba(20, 15, 11, 0.94) 100%);
     content: "";
   }
 
@@ -2589,6 +2589,7 @@ a {
     isolation: isolate;
     max-width: 100%;
     text-align: center;
+    transform: translateY(0.75rem);
   }
 
   .hero-text-block::before {
