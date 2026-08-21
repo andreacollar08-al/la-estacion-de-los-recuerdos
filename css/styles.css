@@ -658,6 +658,65 @@ a {
   transform: translateX(3px);
 }
 
+.section-inline-cta--priority {
+  position: relative;
+  margin-top: 3.25rem;
+  padding: 2.25rem 1.5rem;
+  border: 1px solid var(--border-gold-subtle);
+  background: rgba(245, 235, 217, 0.72);
+  box-shadow: 0 14px 32px rgba(33, 25, 18, 0.1);
+}
+
+.section-inline-cta--priority p {
+  color: var(--text-main);
+  font-size: clamp(1.2rem, 2.2vw, 1.4rem);
+}
+
+.priority-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 3.15rem;
+  padding: 0.9rem 1.25rem;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--text-gold);
+  background: var(--color-espresso);
+  color: var(--text-gold-light);
+  box-shadow: 0 8px 22px rgba(38, 28, 20, 0.28), 0 0 0 0 rgba(191, 160, 96, 0.32);
+  animation: priorityCtaPulse 3.2s var(--ease-editorial) infinite;
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.priority-cta::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.18) 48%, transparent 66%);
+  content: "";
+  transform: translateX(-115%);
+  animation: priorityCtaSheen 4.8s var(--ease-editorial) infinite;
+}
+
+.priority-cta:hover {
+  background: var(--color-espresso-hover);
+  color: #fff4d7;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(38, 28, 20, 0.36), 0 0 18px rgba(191, 160, 96, 0.32);
+}
+
+@keyframes priorityCtaPulse {
+  0%, 100% { box-shadow: 0 8px 22px rgba(38, 28, 20, 0.28), 0 0 0 0 rgba(191, 160, 96, 0.28); }
+  50% { box-shadow: 0 10px 24px rgba(38, 28, 20, 0.32), 0 0 0 7px rgba(191, 160, 96, 0); }
+}
+
+@keyframes priorityCtaSheen {
+  0%, 45% { transform: translateX(-115%); }
+  70%, 100% { transform: translateX(115%); }
+}
+
 .feature-column {
   display: flex;
   flex-direction: column;
