@@ -1,0 +1,27 @@
+{
+  "name": "appweb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/test_suite.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreacollar08-al/la-estacion-de-los-recuerdos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreacollar08-al/la-estacion-de-los-recuerdos/issues"
+  },
+  "homepage": "https://github.com/andreacollar08-al/la-estacion-de-los-recuerdos#readme",
+  "description": "",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}

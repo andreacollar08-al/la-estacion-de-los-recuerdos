@@ -47,16 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. FORMULARIO VIP Y MODAL DE CONFIRMACIÓN CON REDIRECCIÓN A GRUPO DE WHATSAPP
   const bookingForm = document.getElementById('vip-booking-form');
   const modal = document.getElementById('vip-modal');
   const modalCloseBtn = document.getElementById('modal-close-btn');
   const modalFolioDisplay = document.getElementById('modal-folio-display');
   const modalMsgCopy = document.getElementById('modal-msg-copy');
   const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn');
+  let lastFocusedElement = null;
 
   if (bookingForm) {
-    bookingForm.addEventListener('submit', (e) => {
+    bookingForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const nameInput = document.getElementById('lead-name');
@@ -64,100 +64,115 @@ document.addEventListener('DOMContentLoaded', () => {
       const phoneInput = document.getElementById('lead-phone');
       const countInput = document.getElementById('lead-count');
       const consentInput = document.getElementById('lead-consent');
+      const submitBtn = document.getElementById('btn-submit-booking');
+      const statusEl = document.getElementById('lead-form-status');
 
       const name = nameInput.value.trim();
       const email = emailInput.value.trim();
       const phone = phoneInput.value.trim();
       const count = countInput.value || 'Familia';
 
-      if (!name) {
-        highlightError(nameInput);
+      if (name.length < 2) {
+        highlightError(nameInput, 'Escribe tu nombre completo.');
         return;
       }
-      if (!email || !email.includes('@')) {
-        highlightError(emailInput);
+      if (!emailInput.checkValidity()) {
+        highlightError(emailInput, 'Escribe un correo electrónico válido.');
         return;
       }
-      if (!phone || phone.length < 8) {
-        highlightError(phoneInput);
+      if (phone.replace(/\D/g, '').length < 10) {
+        highlightError(phoneInput, 'Escribe un número de WhatsApp válido.');
         return;
       }
       if (consentInput && !consentInput.checked) {
-        alert('Por favor acepta los términos para recibir información exclusiva.');
+        setFormStatus('Necesitamos tu autorización para enviarte las primicias.', true);
+        consentInput.focus();
         return;
       }
 
-      // Folio VIP Único
-      const randomFolio = Math.floor(1000 + Math.random() * 9000);
-      const folioCode = `VIP-2026-${randomFolio}`;
+      submitBtn.disabled = true;
+      submitBtn.setAttribute('aria-busy', 'true');
+      setFormStatus('Reservando tu boleto y preparando tu acceso…', false);
 
-      modalFolioDisplay.textContent = `FOLIO DE ACCESO: #${folioCode}`;
-      modalMsgCopy.innerHTML = `¡Hola, <strong>${escapeText(name)}</strong>! Ya formas parte de nuestra lista prioritaria. Te avisaremos antes que nadie cuando el viaje esté listo para comenzar. Únete a continuación a nuestro <strong>Grupo Exclusivo de WhatsApp</strong> para recibir todas las primicias.`;
-
-      // Enlace directo al Grupo Oficial de WhatsApp
-      const waGroupUrl = 'https://chat.whatsapp.com/JhaAaFnj4kS4qPZj3wBbLe?s=cl&p=i&ilr=2';
-      modalWhatsappBtn.href = waGroupUrl;
-
-      // Desbloquear dinámicamente la sección del Grupo VIP en la página
-      const vipSection = document.getElementById('grupo-vip');
-      const unlockedTitle = document.getElementById('unlocked-vip-title');
-      const unlockedDesc = document.getElementById('unlocked-vip-desc');
-      if (vipSection) {
-        vipSection.classList.remove('is-hidden');
-      }
-      if (unlockedTitle) {
-        unlockedTitle.innerHTML = `TU BOLETO ESTÁ RESERVADO 🎟️`;
-      }
-      if (unlockedDesc) {
-        unlockedDesc.innerHTML = `¡Hola, <strong>${escapeText(name)}</strong>! Ya formas parte de nuestra lista prioritaria con el folio <strong>#${folioCode}</strong>. Te avisaremos antes que nadie cuando el viaje esté listo para comenzar. Únete a nuestra <strong>comunidad privada en WhatsApp</strong> para recibir novedades y primicias exclusivas.`;
-      }
-
-      // Guardar en LocalStorage
       try {
-        const stored = JSON.parse(localStorage.getItem('rubiel_leads_2026') || '[]');
-        stored.push({
-          id: 'lead_' + Date.now(),
-          name,
-          email,
-          phone,
-          count,
-          folioCode,
-          date: new Date().toISOString(),
-          status: 'Pendiente'
+        const response = await fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            attendee_count: count,
+            consent: true,
+            source: 'landing_vip'
+          })
         });
-        localStorage.setItem('rubiel_leads_2026', JSON.stringify(stored));
-      } catch (err) {
-        console.warn('LocalStorage error', err);
-      }
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok || !payload.success) {
+          throw new Error(payload.error || 'No pudimos guardar tu registro. Intenta de nuevo.');
+        }
 
-      // Abrir la pestaña de Bienvenida VIP dedicada
-      const welcomeUrl = `gracias.html?nombre=${encodeURIComponent(name)}&folio=${encodeURIComponent(folioCode)}&personas=${encodeURIComponent(count)}`;
-      
-      try {
-        const newTab = window.open(welcomeUrl, '_blank');
-        if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+        const folioCode = payload.data.folio;
+        const duplicateCopy = payload.data.duplicate
+          ? 'Ya encontramos tu registro. Conservamos tu boleto prioritario y no creamos un duplicado.'
+          : 'Tu registro quedó guardado. Ya formas parte de la lista prioritaria.';
+        modalFolioDisplay.textContent = `FOLIO DE ACCESO: #${folioCode}`;
+        modalMsgCopy.innerHTML = `¡Hola, <strong>${escapeText(name)}</strong>! ${duplicateCopy} Te avisaremos antes que nadie cuando el viaje esté listo para comenzar. Únete a continuación a nuestro <strong>Grupo Exclusivo de WhatsApp</strong> para recibir todas las primicias.`;
+
+        const waGroupUrl = 'https://chat.whatsapp.com/JhaAaFnj4kS4qPZj3wBbLe?s=cl&p=i&ilr=2';
+        modalWhatsappBtn.href = waGroupUrl;
+
+        const vipSection = document.getElementById('grupo-vip');
+        const unlockedTitle = document.getElementById('unlocked-vip-title');
+        const unlockedDesc = document.getElementById('unlocked-vip-desc');
+        if (vipSection) vipSection.classList.remove('is-hidden');
+        if (unlockedTitle) unlockedTitle.textContent = 'TU BOLETO ESTÁ RESERVADO';
+        if (unlockedDesc) {
+          unlockedDesc.innerHTML = `¡Hola, <strong>${escapeText(name)}</strong>! Ya formas parte de nuestra lista prioritaria con el folio <strong>#${folioCode}</strong>. Te avisaremos antes que nadie cuando el viaje esté listo para comenzar. Únete a nuestra <strong>comunidad privada en WhatsApp</strong> para recibir novedades y primicias exclusivas.`;
+        }
+
+        setFormStatus('Registro confirmado. Tu boleto está listo.', false);
+        const welcomeUrl = `gracias.html?nombre=${encodeURIComponent(name)}&folio=${encodeURIComponent(folioCode)}&personas=${encodeURIComponent(count)}`;
+        openModal();
+        bookingForm.reset();
+        try {
+          const newTab = window.open(welcomeUrl, '_blank', 'noopener,noreferrer');
+          if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') window.location.href = welcomeUrl;
+        } catch (err) {
           window.location.href = welcomeUrl;
         }
-      } catch (err) {
-        window.location.href = welcomeUrl;
+      } catch (error) {
+        setFormStatus(error.message, true);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.removeAttribute('aria-busy');
       }
-
-      openModal();
-      bookingForm.reset();
     });
+  }
+
+  function setFormStatus(message, isError) {
+    const statusEl = document.getElementById('lead-form-status');
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.classList.toggle('is-error', !!isError);
   }
 
   function openModal() {
     if (modal) {
+      lastFocusedElement = document.activeElement;
       modal.classList.add('is-visible');
+      modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      if (modalCloseBtn) modalCloseBtn.focus();
     }
   }
 
   function closeModal() {
     if (modal) {
       modal.classList.remove('is-visible');
+      modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') lastFocusedElement.focus();
       const vipSection = document.getElementById('grupo-vip');
       if (vipSection && !vipSection.classList.contains('is-hidden')) {
         setTimeout(() => {
@@ -180,10 +195,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  function highlightError(input) {
+  function highlightError(input, message = 'Revisa este campo.') {
     input.focus();
     input.style.borderColor = '#9e2a2b';
     input.style.boxShadow = '0 0 0 3px rgba(158, 42, 43, 0.25)';
+    setFormStatus(message, true);
     setTimeout(() => {
       input.style.borderColor = '';
       input.style.boxShadow = '';
@@ -300,6 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8.1 MATRIZ 3D PARALLAX UNFURLING GALLERY
   // --------------------------------------------------------------------------
   function initParallaxUnfurlingGallery() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const viewport = document.getElementById('parallax-unfurl-viewport');
     const matrix = document.getElementById('parallax-3d-matrix');
 
@@ -380,6 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 10. SISTEMA CINEMÁTICO: ANCLAJE EXACTO 1:1 DE HUMO, FARO Y VAPOR DE RUEDAS
   // --------------------------------------------------------------------------
   function initAtmosphericLocomotiveEffects() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const canvas = document.getElementById('smoke-canvas');
     const stageBackdrop = document.getElementById('hero-stage-backdrop');
     const flareEl = document.getElementById('train-lens-flare');
@@ -608,6 +626,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 11. SISTEMA DE CRISTALES DE NIEVE EN FORMA DE ESTRELLA (6 PUNTAS / DESTELLES)
   // --------------------------------------------------------------------------
   function initSnowfall() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const canvas = document.getElementById('snow-canvas');
     if (!canvas) return;
 

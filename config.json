@@ -1,0 +1,72 @@
+{
+  "business": {
+    "brand_name": "Rubiel Photo Art",
+    "slogan": "Historias Enmarcadas",
+    "city": "Palenque, Chiapas",
+    "address": "Estudio Principal, Calle Central Poniente #45, Palenque, Chiapas",
+    "whatsapp_photographer": "529161234567",
+    "whatsapp_photographer_display": "+52 (916) 123-4567",
+    "whatsapp_makeup": "529167654321",
+    "whatsapp_makeup_display": "+52 (916) 765-4321",
+    "admin_email": "contacto@rubielphoto.com",
+    "instagram": "https://instagram.com/rubielphoto",
+    "facebook": "https://facebook.com/rubielphotoart"
+  },
+  "campaign": {
+    "title": "MINI SESIONES NAVIDEÑAS",
+    "subtitle": "Retratos que se convierten en recuerdos para siempre.",
+    "season_tag": "EDICIÓN NAVIDEÑA · ÚNICA TEMPORADA DEL AÑO",
+    "urgency_badge": "UNA SOLA TEMPORADA AL AÑO",
+    "urgency_text": "Las mini sesiones navideñas solo estarán disponibles durante estas fechas. Cuando la agenda se llene, no se abrirán nuevos espacios.",
+    "duration_minutes": 30,
+    "photo_count": 15,
+    "delivery_time": "7 días hábiles",
+    "price_total_mxn": 2800,
+    "price_deposit_mxn": 1000,
+    "price_balance_mxn": 1800,
+    "cash_balance_notice": "EL SALDO RESTANTE SE LIQUIDA EN EFECTIVO EL DÍA DE LA SESIÓN."
+  },
+  "extras": {
+    "custom_cake": {
+      "id": "custom_cake",
+      "name": "Pastel Personalizado",
+      "tag": "EXTRA OPCIONAL",
+      "description": "Diseñado artesanalmente para combinar con la paleta y set navideño.",
+      "price_mxn": 650,
+      "notice": "Se agrega al reservar, pero se liquida en efectivo el día de la sesión. No aumenta el anticipo."
+    },
+    "makeup_hair": {
+      "id": "makeup_hair",
+      "name": "Maquillaje y Peinado Profesional",
+      "tag": "EXTRA OPCIONAL",
+      "description": "Maquillaje editorial, delicado y natural para lucir impecable en cámara.",
+      "price_mxn": 850,
+      "notice": "Cupos limitados por día. Debes llegar 45 minutos antes de tu sesión.",
+      "arrival_advance_minutes": 45
+    }
+  },
+  "schedule": {
+    "dates": [
+      { "date": "2026-11-28", "day_name": "Sábado", "day_num": "28", "month_name": "Noviembre", "is_weekend": true },
+      { "date": "2026-11-29", "day_name": "Domingo", "day_num": "29", "month_name": "Noviembre", "is_weekend": true },
+      { "date": "2026-12-05", "day_name": "Sábado", "day_num": "05", "month_name": "Diciembre", "is_weekend": true },
+      { "date": "2026-12-06", "day_name": "Domingo", "day_num": "06", "month_name": "Diciembre", "is_weekend": true },
+      { "date": "2026-12-12", "day_name": "Sábado", "day_num": "12", "month_name": "Diciembre", "is_weekend": true },
+      { "date": "2026-12-13", "day_name": "Domingo", "day_num": "13", "month_name": "Diciembre", "is_weekend": true },
+      { "date": "2026-12-19", "day_name": "Sábado", "day_num": "19", "month_name": "Diciembre", "is_weekend": true },
+      { "date": "2026-12-20", "day_name": "Domingo", "day_num": "20", "month_name": "Diciembre", "is_weekend": true }
+    ],
+    "time_slots": [
+      "08:30",
+      "10:00",
+      "11:30",
+      "13:00",
+      "14:30",
+      "16:00",
+      "17:30",
+      "19:00",
+      "20:30",
+      "21:00"
+    ]
+  }
+}

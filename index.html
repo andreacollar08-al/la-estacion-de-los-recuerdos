@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=5.0">
+  <link rel="stylesheet" href="css/styles.css?v=5.1">
 </head>
 <body>
   <!-- THESIS: Responsive luxury Victorian steam train pre-registration landing for Rubiel Photo Art. Perfect mobile layout showing full locomotive, desktop flare & chimney smoke, abundant star crystal snowfall. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->
@@ -709,17 +709,17 @@
 
           <div class="booking-perks-list">
             <div class="perk-row">
-              <div class="perk-icon-circle">🎟️</div>
+              <div class="perk-icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h14v5a2 2 0 0 0 0 6v5H5v-5a2 2 0 0 0 0-6V4Z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
               <span>Primer aviso de fecha de apertura</span>
             </div>
 
             <div class="perk-row">
-              <div class="perk-icon-circle">🏷️</div>
+              <div class="perk-icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m20 13-7 7-10-10V3h7l10 10Z"/><circle cx="7.5" cy="7.5" r="1"/></svg></div>
               <span>Información exclusiva y detalles del set</span>
             </div>
 
             <div class="perk-row">
-              <div class="perk-icon-circle">🚂</div>
+              <div class="perk-icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 17V6a3 3 0 0 1 3-3h5a5 5 0 0 1 5 5v9"/><path d="M5 17h13M7 20a2 2 0 1 0 0-4M17 20a2 2 0 1 0 0-4M8 8h9M8 12h9"/></svg></div>
               <span>Acceso prioritario antes del estreno general</span>
             </div>
           </div>
@@ -766,7 +766,7 @@
               </svg>
               <select id="lead-count" class="field-select" aria-label="Cantidad de personas que asistirán">
                 <option value="" disabled selected>¿Cuántas personas asistirán?</option>
-                <option value="1 a 2 personas">1 a 2 personas (Pareja / Individual)</option>
+                <option value="1 a 2 personas (Pareja / Individual)">1 a 2 personas (Pareja / Individual)</option>
                 <option value="3 a 4 personas (Familia pequeña)">3 a 4 personas (Familia pequeña)</option>
                 <option value="5 a 6 personas (Familia grande)">5 a 6 personas (Familia grande)</option>
                 <option value="Más de 6 personas (Sesión Generacional)">Más de 6 personas (Sesión Generacional con abuelitos)</option>
@@ -782,6 +782,7 @@
             <button type="submit" class="btn-dark-solid btn-form-submit" id="btn-submit-booking">
               <span>QUIERO MI ACCESO PRIORITARIO »</span>
             </button>
+            <p class="form-status" id="lead-form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
 
@@ -794,8 +795,8 @@
     <section class="section-vip-community is-hidden" id="grupo-vip" aria-live="polite">
       <div class="vip-community-container">
         <div class="vip-community-card">
-          <div class="vip-community-badge">TU BOLETO ESTÁ RESERVADO 🎟️</div>
-          <h2 class="vip-community-title" id="unlocked-vip-title">TU BOLETO ESTÁ RESERVADO 🎟️</h2>
+          <div class="vip-community-badge">TU BOLETO ESTÁ RESERVADO</div>
+          <h2 class="vip-community-title" id="unlocked-vip-title">TU BOLETO ESTÁ RESERVADO</h2>
           <div class="divider-x">
             <span>✕</span>
           </div>
@@ -805,15 +806,15 @@
 
           <div class="vip-perks-row">
             <div class="vip-perk-item">
-              <span class="vip-perk-icon">📅</span>
+              <span class="vip-perk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></span>
               <span class="vip-perk-text">Primer aviso de apertura de agenda</span>
             </div>
             <div class="vip-perk-item">
-              <span class="vip-perk-icon">🏷️</span>
+              <span class="vip-perk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m20 13-7 7-10-10V3h7l10 10Z"/><circle cx="7.5" cy="7.5" r="1"/></svg></span>
               <span class="vip-perk-text">Información y detalles exclusivos</span>
             </div>
             <div class="vip-perk-item">
-              <span class="vip-perk-icon">🚂</span>
+              <span class="vip-perk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 17V6a3 3 0 0 1 3-3h5a5 5 0 0 1 5 5v9"/><path d="M5 17h13M7 20a2 2 0 1 0 0-4M17 20a2 2 0 1 0 0-4M8 8h9M8 12h9"/></svg></span>
               <span class="vip-perk-text">Vistazos detrás de cámaras de la locomotora</span>
             </div>
           </div>
@@ -960,7 +961,7 @@
       <div class="footer-legal-links">
         <a href="#">Política de Privacidad</a>
         <a href="#">Términos y Condiciones</a>
-        <a href="admin.html" style="opacity: 0.5; margin-left: 0.5rem;" title="Acceso exclusivo para Rubiel Photo Art">🔒 Panel Admin</a>
+        <a href="admin.html" style="opacity: 0.5; margin-left: 0.5rem;" title="Acceso exclusivo para Rubiel Photo Art">Panel Admin</a>
       </div>
     </div>
   </footer>
@@ -968,11 +969,11 @@
   <!-- ======================================================================
        MODAL: BILLETE DIGITAL VIP CONFIRMADO
        ====================================================================== -->
-  <div class="modal-overlay" id="vip-modal" role="dialog" aria-modal="true" aria-labelledby="modal-ticket-title">
+  <div class="modal-overlay" id="vip-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-ticket-title">
     <div class="ticket-box">
       <button class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar ventana">✕</button>
       <div class="ticket-seal-stamp">ACCESO PRIORITARIO<br>CONFIRMADO</div>
-      <h3 class="ticket-main-title" id="modal-ticket-title">TU BOLETO ESTÁ RESERVADO 🎟️</h3>
+      <h3 class="ticket-main-title" id="modal-ticket-title">TU BOLETO ESTÁ RESERVADO</h3>
       <div class="ticket-folio-badge" id="modal-folio-display">FOLIO: #VIP-2026-0000</div>
       <p class="ticket-personal-copy" id="modal-msg-copy">
         Ya formas parte de nuestra lista prioritaria. Te avisaremos antes que nadie cuando el viaje esté listo para comenzar.
@@ -1045,6 +1046,6 @@
     <span class="sticky-wa-label">¿Dudas? Escríbenos</span>
   </a>
 
-  <script src="js/app.js?v=5.0"></script>
+  <script src="js/app.js?v=5.1"></script>
 </body>
 </html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprobante de Reserva · Mini Sesiones Navideñas | Rubiel Photo Art</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Tipografía Editorial y Palo Seco Limpia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css?v=6.0">
+
+  <style>
+    :root {
+      --recibo-bg: #0b0e14;
+      --recibo-card: #121820;
+      --recibo-border: rgba(197, 160, 89, 0.35);
+      --recibo-gold: #c5a059;
+      --recibo-gold-light: #e8cca0;
+      --recibo-burgundy: #681b26;
+      --recibo-burgundy-light: #f87171;
+      --recibo-green: #25d366;
+    }
+
+    body {
+      background-color: var(--recibo-bg);
+      background-image: radial-gradient(circle at 50% 10%, rgba(197, 160, 89, 0.08) 0%, transparent 60%);
+      color: #ede6dc;
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .voucher-wrapper {
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .voucher-card {
+      background: var(--recibo-card);
+      border: 1px solid var(--recibo-border);
+      border-radius: 6px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+      position: relative;
+    }
+
+    .voucher-header {
+      text-align: center;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .voucher-brand {
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      color: #ffffff;
+      margin-bottom: 0.35rem;
+    }
+
+    .voucher-subbrand {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--recibo-gold);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .voucher-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      color: var(--recibo-green);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.2rem;
+      border-radius: 20px;
+    }
+
+    .voucher-demo-badge {
+      display: inline-block;
+      background: rgba(197, 160, 89, 0.18);
+      border: 1px dashed var(--recibo-gold);
+      color: var(--recibo-gold-light);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      margin-top: 0.75rem;
+    }
+
+    .voucher-title {
+      font-family: var(--font-title);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    .voucher-folio {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--recibo-gold-light);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.4rem 1.2rem;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    /* Tabla de Detalles */
+    .voucher-details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 4px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .detail-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+
+    .detail-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .detail-value.gold {
+      color: var(--recibo-gold-light);
+    }
+
+    /* Bloque Oficial de Saldos */
+    .voucher-balance-block {
+      background: rgba(197, 160, 89, 0.08);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      border-radius: 4px;
+      padding: 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .balance-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed rgba(197, 160, 89, 0.2);
+    }
+
+    .balance-row:last-child {
+      border-bottom: none;
+      padding-top: 0.75rem;
+    }
+
+    .balance-label {
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ede6dc;
+    }
+
+    .balance-num {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .balance-num.deposit {
+      color: var(--recibo-green);
+    }
+
+    .balance-num.due {
+      color: var(--recibo-gold-light);
+    }
+
+    /* Franja de Aviso de Efectivo */
+    .voucher-cash-alert {
+      background: #2b1115;
+      border: 1px solid var(--recibo-burgundy);
+      color: #fca5a5;
+      padding: 1rem 1.25rem;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    /* Botones de Acción */
+    .voucher-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-voucher {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-voucher-wa {
+      background: var(--recibo-green);
+      color: #0b2214;
+    }
+    .btn-voucher-wa:hover {
+      background: #2ecc71;
+      transform: translateY(-2px);
+    }
+
+    .btn-voucher-print {
+      background: var(--recibo-gold);
+      color: #120e0a;
+    }
+    .btn-voucher-print:hover {
+      background: var(--recibo-gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-voucher-email {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn-voucher-email:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .voucher-footer-links {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .voucher-footer-links a {
+      color: #94a3b8;
+      font-size: 0.8rem;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .voucher-footer-links a:hover {
+      color: #ffffff;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .voucher-card {
+        border: 1px solid #000000 !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .voucher-actions, .voucher-footer-links {
+        display: none !important;
+      }
+      .voucher-brand, .voucher-title, .detail-value, .balance-num {
+        color: #000000 !important;
+      }
+      .voucher-folio {
+        border: 1px solid #000 !important;
+        background: none !important;
+        color: #000000 !important;
+      }
+      .voucher-cash-alert {
+        border: 2px solid #000000 !important;
+        background: #f0f0f0 !important;
+        color: #000000 !important;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .voucher-card {
+        padding: 2rem 1.5rem;
+      }
+      .voucher-details-grid {
+        grid-template-columns: 1fr;
+      }
+      .voucher-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="voucher-wrapper">
+    <div class="voucher-card" id="voucher-card">
+
+      <div class="voucher-header">
+        <div class="voucher-brand">RUBIEL PHOTO ART</div>
+        <div class="voucher-subbrand">HISTORIAS ENMARCADAS · NAVIDAD 2026</div>
+
+        <div>
+          <span class="voucher-status-badge" id="v-status-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+            <span id="v-status-text">RESERVA CONFIRMADA</span>
+          </span>
+        </div>
+
+        <div id="v-demo-tag" class="voucher-demo-badge" style="display: none;">
+          MODO DEMO INTERNO (PRUEBA ADMINISTRATIVA)
+        </div>
+
+        <h1 class="voucher-title">COMPROBANTE OFICIAL</h1>
+        <div class="voucher-folio" id="v-folio">FOLIO: CARGANDO...</div>
+      </div>
+
+      <!-- Datos del Cliente y Sesión -->
+      <div class="voucher-details-grid">
+        <div class="detail-item">
+          <span class="detail-label">Persona / Quinceañera / Modelo</span>
+          <span class="detail-value" id="v-name">—</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Tutor / Responsable</span>
+          <span class="detail-value" id="v-tutor">—</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Fecha de Sesión</span>
+          <span class="detail-value gold" id="v-date">—</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Horario Reservado</span>
+          <span class="detail-value gold" id="v-time">—</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Contacto WhatsApp</span>
+          <span class="detail-value" id="v-phone">—</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Extras Seleccionados</span>
+          <span class="detail-value" id="v-extras">Ninguno</span>
+        </div>
+      </div>
+
+      <!-- Bloque de Totales y Desglose -->
+      <div class="voucher-balance-block">
+        <div class="balance-row">
+          <span class="balance-label">TU CUENTA GENERAL ES DE:</span>
+          <span class="balance-num" id="v-total">$0 MXN</span>
+        </div>
+
+        <div class="balance-row">
+          <span class="balance-label">DISTE UN ANTICIPO DE:</span>
+          <span class="balance-num deposit" id="v-deposit">$0 MXN</span>
+        </div>
+
+        <div class="balance-row">
+          <span class="balance-label">QUEDAN PENDIENTES:</span>
+          <span class="balance-num due" id="v-balance">$0 MXN</span>
+        </div>
+      </div>
+
+      <!-- Advertencia de Pago en Efectivo -->
+      <div class="voucher-cash-alert">
+        EL SALDO RESTANTE SE LIQUIDA EN EFECTIVO EL DÍA DE LA SESIÓN.
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="voucher-actions">
+        <button class="btn-voucher btn-voucher-print" onclick="window.print()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          IMPRIMIR / PDF
+        </button>
+
+        <a href="#" class="btn-voucher btn-voucher-wa" id="v-btn-whatsapp" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.073-2.115-.515-1.782-.74-2.92-2.555-3.008-2.673-.088-.119-.714-.951-.714-1.815 0-.865.452-1.291.613-1.467.161-.177.353-.221.471-.221.119 0 .237.001.34.006.109.006.255-.041.398.303.148.356.505 1.233.549 1.322.044.089.073.193.015.31-.059.119-.089.193-.178.297-.089.104-.187.233-.267.312-.089.089-.182.186-.078.365.104.178.463.765.994 1.238.683.609 1.259.798 1.437.887.178.089.282.074.386-.045.104-.119.444-.519.563-.697.119-.178.237-.148.398-.089.161.059 1.022.482 1.198.571.176.089.294.134.338.208.044.075.044.433-.1.838z"/>
+          </svg>
+          WHATSAPP
+        </a>
+
+        <button class="btn-voucher btn-voucher-email" id="v-btn-email" onclick="enviarReciboCorreo()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          ENVIAR POR EMAIL
+        </button>
+      </div>
+
+      <div class="voucher-footer-links">
+        <a href="/">← Volver al sitio principal</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const folioParam = urlParams.get('folio');
+    const isSimulated = urlParams.get('simulated_checkout') === '1';
+
+    let currentReservation = null;
+
+    async function loadVoucher() {
+      if (!folioParam) {
+        document.getElementById('v-folio').textContent = 'FOLIO NO ESPECIFICADO';
+        return;
+      }
+
+      try {
+        const confirmUrl = isSimulated ? `/api/reservation-by-folio/${folioParam}?confirm_simulated=1` : `/api/reservation-by-folio/${folioParam}`;
+        const res = await fetch(confirmUrl);
+        const data = await res.json();
+
+        if (!data.success || !data.data) {
+          document.getElementById('v-folio').textContent = 'FOLIO INVÁLIDO';
+          return;
+        }
+
+        const r = data.data;
+        currentReservation = r;
+
+        document.getElementById('v-folio').textContent = `FOLIO: #${r.folio}`;
+        document.getElementById('v-name').textContent = r.quinceanera_name;
+        document.getElementById('v-tutor').textContent = r.tutor_name;
+        document.getElementById('v-date').textContent = r.session_date;
+        document.getElementById('v-time').textContent = r.session_time;
+        document.getElementById('v-phone').textContent = r.whatsapp;
+
+        const extras = [];
+        if (r.custom_cake_selected) extras.push('Pastel Personalizado');
+        if (r.makeup_hair_selected) extras.push('Maquillaje y Peinado');
+        document.getElementById('v-extras').textContent = extras.length > 0 ? extras.join(', ') : 'Ninguno';
+
+        const deposit = r.amount_mxn || 1000;
+        const total = r.total_mxn || 2800;
+        const balance = total - deposit;
+
+        document.getElementById('v-total').textContent = `$${total.toLocaleString('es-MX')} MXN`;
+        document.getElementById('v-deposit').textContent = `$${deposit.toLocaleString('es-MX')} MXN`;
+        document.getElementById('v-balance').textContent = `$${balance.toLocaleString('es-MX')} MXN`;
+
+        if (r.is_demo) {
+          document.getElementById('v-demo-tag').style.display = 'inline-block';
+        }
+
+        // WhatsApp Link con mensaje prellenado según especificación
+        const waPhotographer = '529161234567';
+        const msgText = encodeURIComponent(
+          `Hola, mi reserva quedó confirmada para el ${r.session_date} a las ${r.session_time}.\n\n` +
+          `• Folio: #${r.folio}\n` +
+          `• Nombre: ${r.quinceanera_name}\n` +
+          `• Anticipo pagado: $${deposit} MXN\n` +
+          `• Saldo pendiente: $${balance} MXN (pago en efectivo el día de la sesión)\n\n` +
+          `¡Muchas gracias!`
+        );
+
+        document.getElementById('v-btn-whatsapp').href = `https://wa.me/${waPhotographer}?text=${msgText}`;
+
+      } catch (err) {
+        console.error('Error al cargar comprobante:', err);
+      }
+    }
+
+    async function enviarReciboCorreo() {
+      if (!currentReservation) return;
+      const btn = document.getElementById('v-btn-email');
+      btn.disabled = true;
+      btn.textContent = 'ENVIANDO...';
+
+      try {
+        const res = await fetch('/api/send-receipt-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ folio: currentReservation.folio })
+        });
+        const d = await res.json();
+        if (d.success) {
+          alert('¡Recibo enviado exitosamente por correo electrónico!');
+        } else {
+          alert('No se pudo enviar el correo: ' + (d.error || 'Error desconocido'));
+        }
+      } catch (e) {
+        alert('Error de conexión al enviar correo');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          ENVIAR POR EMAIL
+        `;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadVoucher);
+  </script>
+</body>
+</html>
