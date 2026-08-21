@@ -50,17 +50,14 @@
       <nav class="header-nav" aria-label="Navegación principal">
         <a href="#inicio" class="nav-link">INICIO</a>
         <a href="#experiencia" class="nav-link">EXPERIENCIA</a>
-        <a href="#video" class="nav-link">VIDEO</a>
         <a href="#galeria" class="nav-link">GALERÍA</a>
         <a href="#testimonios" class="nav-link">TESTIMONIOS</a>
-        <a href="#faq" class="nav-link">PREGUNTAS</a>
-        <a href="#reservas" class="nav-link">RESERVAS</a>
-        <a href="#estudio" class="nav-link">ESTUDIO</a>
+        <a href="#reservas" class="nav-link">ACCESO VIP</a>
         <a href="#contacto" class="nav-link">CONTACTO</a>
       </nav>
 
       <a href="#reservas" class="header-action-btn">
-        QUIERO SABER MÁS
+        QUIERO MI BOLETO
       </a>
     </div>
   </header>
@@ -110,7 +107,7 @@
           </p>
 
           <p class="hero-story-lead">
-            Una historia que está a punto de comenzar.
+            Una experiencia fotográfica cinematográfica para familias que quieren vivir la Navidad de otra época.
           </p>
 
           <div class="divider-x">
@@ -118,12 +115,14 @@
           </div>
 
           <div class="hero-year-label">
-            NAVIDAD 2026
+            NAVIDAD 2026 · LISTA VIP ABIERTA
           </div>
+
+          <p class="hero-access-note">Regístrate sin compromiso y recibe el primer aviso de apertura 48 horas antes que el público general.</p>
 
           <div class="hero-buttons-row">
             <a href="#reservas" class="btn-dark-solid" id="btn-hero-join">
-              <span>QUIERO SABER MÁS</span>
+              <span>QUIERO MI BOLETO PRIORITARIO</span>
             </a>
             <a href="#experiencia" class="btn-outline">
               <span>DESCUBRIR LA HISTORIA →</span>
@@ -182,6 +181,11 @@
             <h3 class="feature-column-title">EXPERIENCIA EXCLUSIVA</h3>
             <p class="feature-column-text">Una vivencia íntima y nostálgica con acceso preferencial.</p>
           </div>
+        </div>
+
+        <div class="section-inline-cta reveal-on-scroll">
+          <p>¿Quieres enterarte antes de que se revele la fecha?</p>
+          <a href="#reservas" class="text-cta">RESERVAR MI ACCESO VIP <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -592,6 +596,13 @@
             </div>
           </article>
         </div>
+
+        <div class="conversion-bridge reveal-on-scroll">
+          <p class="conversion-bridge-kicker">LA LISTA VIP YA ESTÁ ABIERTA</p>
+          <h3>Tu familia puede ser de las primeras en abordar.</h3>
+          <p>Recibe la fecha de apertura, el primer vistazo del set y la oportunidad de elegir antes que nadie.</p>
+          <a href="#reservas" class="btn-dark-solid">QUIERO MI BOLETO PRIORITARIO</a>
+        </div>
       </div>
     </section>
 
@@ -607,7 +618,7 @@
             <span>✕</span>
           </div>
           <p class="faq-desc">
-            Queremos que tu familia viva una experiencia inolvidable de principio a fin. Aquí respondemos a las consultas más habituales antes de reservar tu lugar.
+            Queremos que tu familia viva una experiencia inolvidable de principio a fin. Aquí respondemos a las consultas más habituales antes de que se abra la preventa.
           </p>
         </div>
 
@@ -619,7 +630,7 @@
               <span class="faq-toggle-icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-answer">
-              <p>Recomendamos tonos otoñales y navideños clásicos que armonicen con la madera, el vapor y el brillo cálido del set. Al confirmar tu lugar te enviaremos una guía visual de vestuario paso a paso.</p>
+              <p>Recomendamos tonos otoñales y navideños clásicos que armonicen con la madera, el vapor y el brillo cálido del set. Al abrirse la preventa te enviaremos una guía visual de vestuario paso a paso.</p>
               
               <!-- Paleta de Colores en Tira Collage Compacta -->
               <div class="faq-palette-compact-bar">
@@ -695,8 +706,10 @@
           </div>
 
           <p class="booking-lead-text">
-            Sé de los primeros en conocer la fecha de apertura, recibir información exclusiva y acceder antes que nadie a esta experiencia.
+            Regístrate hoy y recibe el primer aviso de apertura, detalles exclusivos del set y acceso prioritario 48 horas antes del estreno general.
           </p>
+
+          <p class="booking-commitment-note"><strong>Sin anticipo.</strong> Sin obligación de compra. Solo aseguras tu lugar en la lista de quienes se enteran primero.</p>
 
           <!-- Sello de Garantía y Escasez Ética -->
           <div class="booking-guarantee-badge">
@@ -727,7 +740,7 @@
 
         <!-- Columna Derecha: Tarjeta del Formulario Limpio Original -->
         <div class="booking-form-box reveal-on-scroll reveal-delay-1">
-          <form class="formal-booking-form" id="vip-booking-form" novalidate>
+          <form class="formal-booking-form" id="vip-booking-form" aria-describedby="lead-form-status" novalidate>
             <div class="form-2col-row">
               <!-- Nombre -->
               <div class="field-wrap">
@@ -735,7 +748,7 @@
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-                <input type="text" id="lead-name" class="field-input" placeholder="Nombre completo" required autocomplete="name">
+                <input type="text" id="lead-name" class="field-input" placeholder="Nombre completo" aria-label="Nombre completo" required autocomplete="name">
               </div>
 
               <!-- Correo -->
@@ -744,7 +757,7 @@
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
-                <input type="email" id="lead-email" class="field-input" placeholder="Correo electrónico" required autocomplete="email">
+                <input type="email" id="lead-email" class="field-input" placeholder="Correo electrónico" aria-label="Correo electrónico" required autocomplete="email">
               </div>
             </div>
 
@@ -753,7 +766,7 @@
               <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
               </svg>
-              <input type="tel" id="lead-phone" class="field-input" placeholder="Teléfono / WhatsApp" required autocomplete="tel">
+              <input type="tel" id="lead-phone" class="field-input" placeholder="Teléfono / WhatsApp" aria-label="Teléfono o WhatsApp" required autocomplete="tel">
             </div>
 
             <!-- ¿Cuántas personas asistirán? -->
@@ -883,6 +896,14 @@
     </section>
   </main>
 
+  <section class="legal-note" id="informacion-legal" aria-labelledby="legal-note-title">
+    <div class="legal-note-inner">
+      <h2 id="legal-note-title">Información de registro</h2>
+      <p>Al registrarte, Rubiel Photo Art utilizará tu nombre, correo y WhatsApp únicamente para enviarte avisos y detalles de la experiencia navideña 2026. Puedes solicitar la actualización o eliminación de tus datos escribiendo a <a href="mailto:hola@rubielphotoart.com">hola@rubielphotoart.com</a>.</p>
+      <p>El registro VIP es gratuito y no implica una compra ni garantiza una fecha de sesión. El acceso prioritario está sujeto a la disponibilidad de la preventa.</p>
+    </div>
+  </section>
+
   <!-- ======================================================================
        7. FOOTER MINIMALISTA
        ====================================================================== -->
@@ -959,8 +980,8 @@
     <div class="footer-bottom-bar">
       <div>© 2026 Rubiel Photo Art. Todos los derechos reservados.</div>
       <div class="footer-legal-links">
-        <a href="#">Política de Privacidad</a>
-        <a href="#">Términos y Condiciones</a>
+        <a href="#informacion-legal">Política de Privacidad</a>
+        <a href="#informacion-legal">Términos y Condiciones</a>
         <a href="admin.html" style="opacity: 0.5; margin-left: 0.5rem;" title="Acceso exclusivo para Rubiel Photo Art">Panel Admin</a>
       </div>
     </div>

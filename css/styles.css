@@ -21,12 +21,14 @@
   --text-gold: #bfa060;
   --text-gold-light: #e4c88b;
   --text-light: #f2e9dc;
+  --text-light-muted: #c8b9a5;
 
   /* Líneas y Botones */
   --border-hairline: rgba(77, 63, 50, 0.16);
   --border-gold-subtle: rgba(191, 160, 96, 0.35);
   --color-espresso: #261c14;
   --color-espresso-hover: #382c20;
+  --color-burgundy-rich: #6a2027;
 
   /* Tipografía */
   --font-title: "Cinzel Decorative", "Marcellus", "Playfair Display", Georgia, serif;
@@ -532,6 +534,18 @@ a {
   margin: 0 auto 0.4rem;
 }
 
+.hero-access-note {
+  max-width: 430px;
+  margin: 0.5rem auto 1.35rem;
+  color: var(--text-white);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
 .hero-year-label {
   font-family: var(--font-sans);
   font-size: 0.84rem;
@@ -609,6 +623,39 @@ a {
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
   text-align: center;
+}
+
+.section-inline-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin: 3.5rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-hairline);
+  color: var(--text-secondary);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+}
+
+.section-inline-cta p {
+  margin: 0;
+}
+
+.text-cta {
+  color: var(--text-gold);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.text-cta:hover {
+  color: var(--color-burgundy-rich);
+  transform: translateX(3px);
 }
 
 .feature-column {
@@ -1298,6 +1345,43 @@ a {
   gap: 2rem;
 }
 
+.conversion-bridge {
+  max-width: 720px;
+  margin: 4rem auto 0;
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--border-gold-subtle);
+  background: var(--bg-parchment-card);
+  text-align: center;
+  box-shadow: var(--shadow-minimal);
+}
+
+.conversion-bridge-kicker {
+  margin-bottom: 0.55rem;
+  color: var(--text-gold);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.conversion-bridge h3 {
+  margin: 0;
+  color: var(--text-main);
+  font-family: var(--font-title);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.conversion-bridge > p:not(.conversion-bridge-kicker) {
+  max-width: 52ch;
+  margin: 0.8rem auto 1.5rem;
+  color: var(--text-secondary);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.55;
+}
+
 .testimonial-card {
   background: var(--bg-parchment-card);
   border: 1px solid var(--border-hairline);
@@ -1853,6 +1937,15 @@ a {
   margin: 1.25rem 0 2rem;
 }
 
+.booking-commitment-note {
+  max-width: 42ch;
+  margin: -0.8rem 0 1.8rem;
+  color: #6b4c1b;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
 .booking-perks-list {
   display: flex;
   flex-direction: column;
@@ -2220,6 +2313,39 @@ a {
   color: var(--text-gold);
 }
 
+.legal-note {
+  padding: 2.75rem 2rem;
+  background: #19130e;
+  border-top: 1px solid rgba(191, 160, 96, 0.18);
+  color: var(--text-light-muted);
+}
+
+.legal-note-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.legal-note h2 {
+  margin-bottom: 0.65rem;
+  color: var(--text-gold-light);
+  font-family: var(--font-title);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.legal-note p {
+  margin: 0.45rem 0;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.legal-note a {
+  color: var(--text-gold-light);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 /* --------------------------------------------------------------------------
    13. MODAL DE CONFIRMACIÓN VIP
    -------------------------------------------------------------------------- */
@@ -2508,6 +2634,52 @@ a {
 }
 
 @media (max-width: 680px) {
+  .hero-access-note {
+    max-width: 32ch;
+    margin-bottom: 1.1rem;
+    font-size: 0.74rem;
+  }
+
+  .section-inline-cta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 2.75rem;
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+
+  .section-inline-cta p,
+  .section-inline-cta .text-cta {
+    width: 100%;
+  }
+
+  .conversion-bridge {
+    margin-top: 2.75rem;
+    padding: 2rem 1.25rem;
+  }
+
+  .conversion-bridge h3 {
+    font-size: clamp(1.2rem, 6vw, 1.6rem);
+  }
+
+  .conversion-bridge > p:not(.conversion-bridge-kicker) {
+    font-size: 1.05rem;
+  }
+
+  .conversion-bridge .btn-dark-solid {
+    width: 100%;
+  }
+
+  .booking-commitment-note {
+    margin-top: -0.4rem;
+    font-size: 0.98rem;
+  }
+
+  .legal-note {
+    padding: 2.25rem 1.25rem;
+  }
+
   .features-triplet-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
