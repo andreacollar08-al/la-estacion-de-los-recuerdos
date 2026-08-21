@@ -2564,7 +2564,9 @@ a {
     inset: 0;
     z-index: 5;
     pointer-events: none;
-    background: linear-gradient(180deg, transparent 31%, rgba(20, 15, 11, 0.16) 46%, rgba(20, 15, 11, 0.7) 75%, rgba(20, 15, 11, 0.9) 100%);
+    background:
+      radial-gradient(ellipse 92% 42% at 50% 61%, rgba(20, 15, 11, 0.68) 0%, rgba(20, 15, 11, 0.32) 56%, transparent 100%),
+      linear-gradient(180deg, transparent 27%, rgba(20, 15, 11, 0.22) 43%, rgba(20, 15, 11, 0.78) 67%, rgba(20, 15, 11, 0.94) 100%);
     content: "";
   }
 
@@ -2583,8 +2585,21 @@ a {
   }
 
   .hero-text-block {
+    position: relative;
+    isolation: isolate;
     max-width: 100%;
     text-align: center;
+  }
+
+  .hero-text-block::before {
+    position: absolute;
+    inset: -1rem -1.25rem -1.5rem;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(17, 12, 8, 0.72) 0%, rgba(17, 12, 8, 0.38) 52%, transparent 78%);
+    content: "";
+    filter: blur(10px);
+    transform: scale(1.04);
   }
 
   .hero-main-heading {
